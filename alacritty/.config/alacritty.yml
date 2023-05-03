@@ -1,0 +1,27 @@
+live_config_reload: true
+
+import:
+ - ~/.config/alacritty/themes/coolnight.yaml
+
+startup_mode: SimpleFullscreen
+
+window:
+  opacity: 0.85
+  padding:
+    x: 0
+    y: 0
+  dynamic_padding: false
+  decorations: buttonless
+
+font:
+  normal:
+    family: "JetBrainsMonoNL Nerd Font"
+    style: Regular
+  italic:
+    family: "JetBrainsMonoNL Nerd Font"
+    style: Italic
+  bold:
+    family: "JetBrainsMonoNL Nerd Font"
+    style: Bold
+
+  size: 20.0
