@@ -9,6 +9,7 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
+source ~/.zshenv
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 plugins=(git nvm zsh-autosuggestions zsh-syntax-highlighting web-search fzf-zsh-plugin)
 
@@ -37,3 +38,5 @@ bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
 #   fi
 # fi
 
+# To customize prompt, run `p10k configure` or edit ~/dotfiles/zsh/.zsh/p10k.zsh.
+[[ ! -f ~/dotfiles/zsh/.zsh/p10k.zsh ]] || source ~/dotfiles/zsh/.zsh/p10k.zsh

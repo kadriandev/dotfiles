@@ -1,7 +1,7 @@
 live_config_reload: true
 
 import:
- - ~/.config/alacritty/themes/coolnight.yaml
+ - ~/.config/alacritty/themes/challenger-deep.yaml
 
 startup_mode: SimpleFullscreen
 
