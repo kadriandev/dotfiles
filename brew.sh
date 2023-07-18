@@ -13,9 +13,12 @@ brew update
 brew upgrade
 
 # Add taps
-brew tap heroku/brew
+# brew tap heroku/brew
 
 # Install binaries
+brew install exa
+brew install tmux
+brew install lazygit
 brew install bat
 brew install diff-so-fancy
 brew install git
@@ -27,13 +30,13 @@ brew install webp
 brew install wget
 brew install yarn
 brew install zsh
-brew install zsh-eutosuggestions
+brew install zsh-autosuggestions
 brew install ripgrep
 brew install zoxide
 
 # Install casks
-brew cask install slack
-brew cask install visual-studio-code
+# brew cask install slack
+brew install visual-studio-code --cask
 
 # Install fzf
 brew install fzf
