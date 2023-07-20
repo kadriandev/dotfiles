@@ -22,3 +22,5 @@ lvim.keys.insert_mode["jk"] = "<Esc>"
 -- Exit Neovim
 lvim.keys.normal_mode["<leader>q"] = false
 lvim.keys.normal_mode["<leader>qq"] = ":qa<CR>"
+
+lvim.keys.normal_mode["$"] = "<cmd>lua require'hop'.hint_words()<cr>"
