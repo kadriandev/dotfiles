@@ -17,6 +17,7 @@ brew upgrade
 
 # Install binaries
 brew install exa
+brew install neovim
 brew install tmux
 brew install lazygit
 brew install bat
@@ -30,7 +31,6 @@ brew install webp
 brew install wget
 brew install yarn
 brew install zsh
-brew install zsh-autosuggestions
 brew install ripgrep
 brew install zoxide
 

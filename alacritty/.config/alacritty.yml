@@ -1,5 +1,8 @@
 live_config_reload: true
 
+shell:
+  program: /bin/zsh
+    
 import:
  - ~/.config/alacritty/themes/challenger-deep.yaml
 
@@ -15,13 +18,13 @@ window:
 
 font:
   normal:
-    family: "JetBrainsMonoNL Nerd Font"
+    family: "JetBrainsMonoNL Nerd Font Mono"
     style: Regular
   italic:
-    family: "JetBrainsMonoNL Nerd Font"
+    family: "JetBrainsMonoNL Nerd Font Mono"
     style: Italic
   bold:
-    family: "JetBrainsMonoNL Nerd Font"
+    family: "JetBrainsMonoNL Nerd Font Mono"
     style: Bold
 
   size: 20.0

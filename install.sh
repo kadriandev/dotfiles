@@ -3,6 +3,9 @@
 # Install Homebrew formulae
 source brew.sh
 
+# Install Shell Plugins and Setup
+source shell.sh
+
 # Install node packages
 source node.sh
 

@@ -9,8 +9,8 @@ alias gcm="git commit -m"
 
 # Tmux
 alias tmk="tmux kill-session"
-alias tmr="tmux source ~/.tmux/tmux.conf"
+alias stmux="tmux source ~/.tmux/tmux.conf"
 alias tmd="tmux detach"
 
 # ZSH
-alias zshs="source ~/.zshrc"
+alias szsh="source ~/.config/zsh/.zshrc"
