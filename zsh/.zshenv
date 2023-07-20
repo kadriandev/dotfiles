@@ -1,7 +1,10 @@
 # Set PATH, MANPATH, etc., for Homebrew.
 export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="$XDG_CONFIG_HOME/.config/bin:$PATH"
+export ZSH="$HOME/.oh-my-zsh"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
+
 
 # ~/.tmux/plugins
 export PATH=~/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
