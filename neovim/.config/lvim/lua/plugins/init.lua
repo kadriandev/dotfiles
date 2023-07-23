@@ -25,4 +25,10 @@ return {
       require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     end
   },
+  {
+    'ThePrimeagen/harpoon',
+    config = function()
+      require('harpoon').setup();
+    end
+  },
 }
