@@ -24,3 +24,5 @@ unset conf
 bindkey '^I'   complete-word       # tab          | complete
 bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
 
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/modules/p10k.zsh.
+[[ ! -f ~/.config/zsh/modules/p10k.zsh ]] || source ~/.config/zsh/modules/p10k.zsh

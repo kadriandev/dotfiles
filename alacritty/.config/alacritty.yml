@@ -4,7 +4,7 @@ shell:
   program: /bin/zsh
     
 import:
- - ~/.config/alacritty/themes/challenger-deep.yaml
+ - ~/.config/alacritty/themes/coolnight.yaml
 
 startup_mode: SimpleFullscreen
 

@@ -31,4 +31,5 @@ return {
       require('harpoon').setup();
     end
   },
+  { 'Mofiqul/dracula.nvim' }
 }
