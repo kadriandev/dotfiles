@@ -9,8 +9,11 @@ alias gcm="git commit -m"
 
 # Tmux
 alias tmk="tmux kill-session"
-alias stmux="tmux source ~/.tmux/tmux.conf"
+alias stmux="tmux source ~/.config/tmux/tmux.conf"
 alias tmd="tmux detach"
 
 # ZSH
 alias szsh="source ~/.config/zsh/.zshrc"
+
+#Idaptive Login
+alias ilogin=". ~/.config/scripts/idaptiveLogin.sh"

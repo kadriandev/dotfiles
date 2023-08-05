@@ -1,6 +1,10 @@
 -- General
-lvim.colorscheme = 'dracula'
 lvim.format_on_save = true
 
-lvim.plugins = require("plugins")
 require("mappings")
+
+local utils = require("plugins.utils")
+lvim.plugins = require("plugins")
+utils.loadrequire("plugins.styles.tokyonight")
+
+lvim.builtin.nvimtree.setup.update_focused_file.update_root = false
