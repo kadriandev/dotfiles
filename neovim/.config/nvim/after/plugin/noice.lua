@@ -1,4 +1,4 @@
-require("noice").setup({
+--[[ require("noice").setup({
 	lsp = {
 		-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 		override = {
@@ -15,4 +15,4 @@ require("noice").setup({
 		inc_rename = false, -- enables an input dialog for inc-rename.nvim
 		lsp_doc_border = false, -- add a border to hover docs and signature help
 	},
-})
+}) ]]

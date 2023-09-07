@@ -1,5 +1,3 @@
-local builtin = require("telescope.builtin")
-
 require("telescope").setup({
 	defaults = {
 		mappings = {
@@ -10,11 +8,10 @@ require("telescope").setup({
 		},
 		layout_config = {
 			width = 0.90,
-			prompt_position = "top",
 			preview_cutoff = 120,
 			preview_width = 0.6,
-			-- vertical = { mirror = true },
 		},
+		file_ignore_patterns = { "^./.git/", "^node_modules/" },
 	},
 	pickers = {
 		buffers = {

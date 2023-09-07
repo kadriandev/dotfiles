@@ -27,7 +27,7 @@ dashboard.section.header.val = {
 	"          == -==                             ª╝╝╝╩╩╚╝╝╝╝╩╩╩╩╚╩╝-                      ╚╩╝╝╝╝╝╝╝╩╩╩╩╩",
 }
 dashboard.section.buttons.val = {
-	dashboard.button("f", "Find file", ":Telescope find_files<cr>"),
+	dashboard.button("f", "Find file", ":Telescope find_files hidden=true<cr>"),
 	dashboard.button("r", "Recently used files", ":Telescope oldfiles <CR>"),
 	dashboard.button("q", "Quit", ":qa<CR>"),
 }

@@ -4,12 +4,6 @@
 #
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
 plugins=(git nvm zsh-autosuggestions zsh-syntax-highlighting)
 
 # Path to your oh-my-zsh installation.
@@ -24,8 +18,6 @@ unset conf
 bindkey '^I'   complete-word       # tab          | complete
 bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
 
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/modules/p10k.zsh.
-[[ ! -f ~/.config/zsh/modules/p10k.zsh ]] || source ~/.config/zsh/modules/p10k.zsh
 
 # pnpm
 export PNPM_HOME="/Users/kmonteir/Library/pnpm"
@@ -34,3 +26,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+eval "$(starship init zsh)"
+

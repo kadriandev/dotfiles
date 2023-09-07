@@ -2,10 +2,16 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
+require("luasnip").filetype_extend("typescript", { "typescriptreact" })
+require("luasnip").filetype_extend("javascript", { "javascriptreact" })
+require("luasnip").filetype_extend("typescript", { "html" })
+require("luasnip").filetype_extend("javascript", { "html" })
+
 lsp.ensure_installed({
 	"eslint",
 	"tsserver",
 	"lua_ls",
+	"gopls",
 })
 
 lsp.set_sign_icons({
@@ -18,6 +24,8 @@ lsp.set_sign_icons({
 lsp.on_attach(function(client, bufnr)
 	-- see :help lsp-zero-keybindings
 	-- to learn the available actions
+	local ih = require("inlay-hints")
+	ih.on_attach(client, bufnr)
 	lsp.default_keymaps({
 		buffer = bufnr,
 		omit = { "F4" },
@@ -30,16 +38,16 @@ lsp.format_on_save({
 		timeout_ms = 10000,
 	},
 	servers = {
-		["null-ls"] = { "javascript", "typescript", "typescriptreact", "lua" },
+		["null-ls"] = { "javascript", "typescript", "typescriptreact", "lua", "go" },
 	},
 })
 
-lsp.skip_server_setup({ "tsserver" })
+lsp.skip_server_setup({ "tsserver", "lua_ls" })
 require("typescript").setup({
 	server = {
 		on_attach = function(client, bufnr)
-			-- You can find more commands in the documentation:
-			-- https://github.com/jose-elias-alvarez/typescript.nvim#commands
+			vim.lsp.buf.inlay_hint(bufnr, true)
+
 			Map(
 				"n",
 				"<leader>tm",
@@ -54,6 +62,30 @@ require("typescript").setup({
 				{ buffer = bufnr, desc = "Remove Unused Imports" }
 			)
 		end,
+		settings = {
+			javascript = {
+				inlayHints = {
+					includeInlayEnumMemberValueHints = true,
+					includeInlayFunctionLikeReturnTypeHints = true,
+					includeInlayFunctionParameterTypeHints = true,
+					includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+					includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+					includeInlayPropertyDeclarationTypeHints = true,
+					includeInlayVariableTypeHints = true,
+				},
+			},
+			typescript = {
+				inlayHints = {
+					includeInlayEnumMemberValueHints = true,
+					includeInlayFunctionLikeReturnTypeHints = true,
+					includeInlayFunctionParameterTypeHints = true,
+					includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+					includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+					includeInlayPropertyDeclarationTypeHints = true,
+					includeInlayVariableTypeHints = true,
+				},
+			},
+		},
 	},
 })
 
@@ -63,7 +95,7 @@ require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 lsp.setup()
 
 local cmp = require("cmp")
-local cmp_action = require("lsp-zero").cmp_action()
+-- local cmp_action = require("lsp-zero").cmp_action()
 local cmp_select_opts = { behavior = cmp.SelectBehavior.Select }
 
 cmp.setup({
@@ -92,8 +124,6 @@ cmp.setup({
 				cmp.complete()
 			end
 		end),
-		["<Tab>"] = cmp_action.luasnip_supertab(),
-		["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
 	},
 	snippet = {
 		expand = function(args)
@@ -127,5 +157,6 @@ null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.prettierd,
+		null_ls.builtins.formatting.gofmt,
 	},
 })

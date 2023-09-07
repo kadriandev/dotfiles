@@ -12,19 +12,14 @@ require("lazy").setup({
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,
-		integrations = {
-			nvimtree = true,
-			harpoon = true,
-			hop = true,
-			mason = true,
-			treesitter = true,
-		},
 	},
+	{ "rebelot/kanagawa.nvim", lazy = false, priority = 1000 },
 	{
 		-- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
+			"JoosepAlviste/nvim-ts-context-commentstring",
 		},
 		build = ":TSUpdate",
 	},
@@ -60,65 +55,49 @@ require("lazy").setup({
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
 		end,
-		opts = {
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
-		},
-		{
-			"nvim-telescope/telescope-file-browser.nvim",
-			dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-		},
-		{
-			"alexghergh/nvim-tmux-navigation",
-			config = function()
-				require("nvim-tmux-navigation").setup({
-					disable_when_zoomed = true, -- defaults to false
-					no_wrap = true,
-					keybindings = {
-						left = "<C-h>",
-						down = "<C-j>",
-						up = "<C-k>",
-						right = "<C-l>",
-						last_active = "<C-\\>",
-						next = "<C-Space>",
-					},
-				})
-			end,
-			lazy = false,
-		},
-		{
-			"phaazon/hop.nvim",
-			branch = "v2", -- optional but strongly recommended
-			config = function()
-				-- you can configure Hop the way you like here; see :h hop-config
-				require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
-			end,
-		},
-		{
-			"ThePrimeagen/harpoon",
-			config = function()
-				require("harpoon").setup()
-			end,
-		},
-		{
-			"windwp/nvim-ts-autotag",
-			config = function()
-				require("nvim-ts-autotag").setup()
-			end,
-		},
-		{ "jose-elias-alvarez/typescript.nvim" },
-		{
-			"weilbith/nvim-code-action-menu",
-			cmd = "CodeActionMenu",
-		},
-		{
-			"kdheepak/lazygit.nvim",
-			-- optional for floating window border decoration
-			dependencies = {
-				"nvim-lua/plenary.nvim",
-			},
-		},
+	},
+	{
+		"alexghergh/nvim-tmux-navigation",
+		config = function()
+			require("nvim-tmux-navigation").setup({
+				disable_when_zoomed = true, -- defaults to false
+				no_wrap = true,
+				keybindings = {
+					left = "<C-h>",
+					down = "<C-j>",
+					up = "<C-k>",
+					right = "<C-l>",
+					last_active = "<C-\\>",
+					next = "<C-Space>",
+				},
+			})
+		end,
+		lazy = false,
+	},
+	{
+		"phaazon/hop.nvim",
+		branch = "v2", -- optional but strongly recommended
+		config = function()
+			-- you can configure Hop the way you like here; see :h hop-config
+			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
+		end,
+	},
+	{
+		"ThePrimeagen/harpoon",
+		config = function()
+			require("harpoon").setup()
+		end,
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup()
+		end,
+	},
+	{ "jose-elias-alvarez/typescript.nvim" },
+	{
+		"weilbith/nvim-code-action-menu",
+		cmd = "CodeActionMenu",
 	},
 	{
 		"numToStr/Comment.nvim",
@@ -149,8 +128,7 @@ require("lazy").setup({
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {},
 	},
-	-- lazy.nvim
-	{
+	--[[ 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		opts = {
@@ -164,6 +142,39 @@ require("lazy").setup({
 			--   If not available, we use `mini` as the fallback
 			"rcarriga/nvim-notify",
 		},
-	},
+	 },]]
+	--
 	{ "folke/neodev.nvim", opts = {} },
+	{ "lukas-reineke/indent-blankline.nvim" },
+	{
+		"kylechui/nvim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	},
+	{
+		"simrat39/inlay-hints.nvim",
+		config = function()
+			require("inlay-hints").setup()
+		end,
+	},
+	{
+		"Equilibris/nx.nvim",
+		requires = {
+			"nvim-telescope/telescope.nvim",
+		},
+		config = function()
+			require("nx").setup({})
+		end,
+	},
+	{
+		"stevearc/dressing.nvim",
+		opts = {},
+	},
+	{ "cohama/lexima.vim" },
+	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 })

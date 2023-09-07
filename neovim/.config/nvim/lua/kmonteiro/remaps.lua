@@ -1,5 +1,3 @@
-local opts = { silent = true, noremap = true }
-
 function Map(mode, lhs, rhs, opts)
 	local options = { noremap = true, silent = true }
 	if opts then
@@ -8,16 +6,14 @@ function Map(mode, lhs, rhs, opts)
 	vim.keymap.set(mode, lhs, rhs, options)
 end
 
+Map("n", "<Esc>", "<cmd>noh<cr>")
 Map("i", "jk", "<esc>")
 
-Map("n", "<leader>w", "<cmd>w<cr>")
-Map("i", "<leader>w", "<esc><cmd>w<cr>")
+Map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save Buffer" })
 
 Map("n", "<leader>qq", "<cmd>qa<cr>")
 
-Map("n", "<leader>x", "<cmd>bd<cr>")
-
-Map("n", "<leader>gg", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
+Map("n", "<leader>x", "<cmd>bd<cr>", { desc = "Close Buffer" })
 
 Map("i", "<C-h>", "<Left>")
 Map("i", "<C-l>", "<Right>")
@@ -27,8 +23,6 @@ Map("i", "<C-k>", "<Up>")
 Map("n", "<C-u>", "<C-u>zz")
 Map("n", "<C-d>", "<C-d>zz")
 
-Map("n", "<leader>/", "gcc")
-
 Map("v", "J", ":m '>+1<CR>gv=gv")
 Map("v", "K", ":m '<-2<CR>gv=gv")
 
@@ -37,3 +31,9 @@ Map("n", "n", "nzzzv")
 Map("n", "N", "Nzzzv")
 
 Map("n", "`", "<cmd>lua require'hop'.hint_words()<cr>")
+Map("n", "<leader>/", function()
+	require("Comment.api").toggle.linewise.current()
+end, { desc = "Toggle Comment" })
+Map("v", "<leader>/", function()
+	require("Comment.api").toggle.blockwise.current()
+end)

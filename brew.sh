@@ -24,6 +24,8 @@ brew install bat
 brew install diff-so-fancy
 brew install git
 brew install nvm
+brew install yarn
+brew install npm
 brew install rename
 brew install stow
 brew install tree
