@@ -9,14 +9,13 @@ wk.register({
 		h = { ":Telescope help_tags<cr>", "Search Help Tags" },
 		g = { ":Telescope git_files<cr>", "Search Git Files" },
 	},
+	c = {
+		name = "Code",
+		a = { ":CodeActionMenu<cr>", "Code Action" },
+		n = { name = "Nx" },
+	},
 	d = {
 		name = "Diagnostic",
-		a = { ":CodeActionMenu<cr>", "Code Action" },
 		t = { ":Trouble<cr>", "Trouble" },
-	},
-	e = { "<cmd>NvimTreeToggle<cr>", "Open File Tree" },
-	g = {
-		name = "Git",
-		g = { ":LazyGit<cr>", "Open LazyGit" },
 	},
 }, { prefix = "<leader>" })

@@ -1,5 +1,5 @@
 function Map(mode, lhs, rhs, opts)
-	local options = { noremap = true, silent = true }
+	local options = { noremap = true, silent = true, desc = "which_key_ignore" }
 	if opts then
 		options = vim.tbl_extend("force", options, opts)
 	end
@@ -9,11 +9,13 @@ end
 Map("n", "<Esc>", "<cmd>noh<cr>")
 Map("i", "jk", "<esc>")
 
-Map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save Buffer" })
+Map("n", "<leader>w", "<cmd>w<cr>")
 
 Map("n", "<leader>qq", "<cmd>qa<cr>")
 
-Map("n", "<leader>x", "<cmd>bd<cr>", { desc = "Close Buffer" })
+Map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>")
+
+Map("n", "<leader>x", "<cmd>bd<cr>")
 
 Map("i", "<C-h>", "<Left>")
 Map("i", "<C-l>", "<Right>")
@@ -33,7 +35,7 @@ Map("n", "N", "Nzzzv")
 Map("n", "`", "<cmd>lua require'hop'.hint_words()<cr>")
 Map("n", "<leader>/", function()
 	require("Comment.api").toggle.linewise.current()
-end, { desc = "Toggle Comment" })
+end)
 Map("v", "<leader>/", function()
 	require("Comment.api").toggle.blockwise.current()
 end)

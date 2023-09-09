@@ -94,7 +94,6 @@ require("lazy").setup({
 			require("nvim-ts-autotag").setup()
 		end,
 	},
-	{ "jose-elias-alvarez/typescript.nvim" },
 	{
 		"weilbith/nvim-code-action-menu",
 		cmd = "CodeActionMenu",
@@ -116,7 +115,6 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{ "echasnovski/mini.nvim", version = "*" },
 	{ "windwp/nvim-ts-autotag" },
 	{
 		"goolord/alpha-nvim",
@@ -128,7 +126,7 @@ require("lazy").setup({
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {},
 	},
-	--[[ 	{
+	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		opts = {
@@ -142,8 +140,7 @@ require("lazy").setup({
 			--   If not available, we use `mini` as the fallback
 			"rcarriga/nvim-notify",
 		},
-	 },]]
-	--
+	 },
 	{ "folke/neodev.nvim", opts = {} },
 	{ "lukas-reineke/indent-blankline.nvim" },
 	{
