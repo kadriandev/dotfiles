@@ -24,8 +24,6 @@ lsp.set_sign_icons({
 lsp.on_attach(function(client, bufnr)
 	-- see :help lsp-zero-keybindings
 	-- to learn the available actions
-	local ih = require("inlay-hints")
-	ih.on_attach(client, bufnr)
 	lsp.default_keymaps({
 		buffer = bufnr,
 		omit = { "F4" },
@@ -46,8 +44,13 @@ lsp.skip_server_setup({ "tsserver", "lua_ls" })
 require("typescript").setup({
 	server = {
 		on_attach = function(client, bufnr)
-			vim.lsp.buf.inlay_hint(bufnr, true)
-
+			print("attached")
+			-- vim.lsp.buf.inlay_hint(bufnr, true)
+			require("which-key").register({
+				t = {
+					name = "Typescript",
+				},
+			})
 			Map(
 				"n",
 				"<leader>tm",

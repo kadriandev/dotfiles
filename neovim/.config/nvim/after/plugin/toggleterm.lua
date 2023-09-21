@@ -1,4 +1,3 @@
-local wk = require("which-key")
 local Terminal = require("toggleterm.terminal").Terminal
 local floatTerm = Terminal:new({
 	dir = "git_dir",
@@ -31,7 +30,7 @@ local lazygit = Terminal:new({
 	hidden = true,
 })
 
-function _toggleTerm(term)
+function ToggleTerminal(term)
 	if term == "lazygit" then
 		lazygit:toggle()
 	elseif term == "term" then
@@ -39,11 +38,5 @@ function _toggleTerm(term)
 	end
 end
 
-vim.api.nvim_set_keymap("n", "<C-t>", "<cmd>lua _toggleTerm('term')<cr>", { noremap = true, silent = true })
-wk.register({
-	t = {
-		name = "Terminal",
-		g = { "<cmd>lua _toggleTerm('lazygit')<cr>", "LazyGit" },
-	},
-}, { prefix = "<leader>" })
--- vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+Map("n", "<C-t>", "<cmd>lua ToggleTerminal('term')<cr>")
+Map("n", "<leader>gg", "<cmd>lua ToggleTerminal('lazygit')<cr>")

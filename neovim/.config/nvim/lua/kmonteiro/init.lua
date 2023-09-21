@@ -3,11 +3,13 @@ require("kmonteiro.remaps")
 require("kmonteiro.autocmds")
 
 require("lazy").setup({
+	{ dir = "~/projects/nx-tools.nvim" },
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.2",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -19,6 +21,7 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
+			"RRethy/nvim-treesitter-textsubjects",
 			"JoosepAlviste/nvim-ts-context-commentstring",
 		},
 		build = ":TSUpdate",
@@ -73,14 +76,6 @@ require("lazy").setup({
 			})
 		end,
 		lazy = false,
-	},
-	{
-		"phaazon/hop.nvim",
-		branch = "v2", -- optional but strongly recommended
-		config = function()
-			-- you can configure Hop the way you like here; see :h hop-config
-			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
-		end,
 	},
 	{
 		"ThePrimeagen/harpoon",
@@ -140,7 +135,7 @@ require("lazy").setup({
 			--   If not available, we use `mini` as the fallback
 			"rcarriga/nvim-notify",
 		},
-	 },
+	},
 	{ "folke/neodev.nvim", opts = {} },
 	{ "lukas-reineke/indent-blankline.nvim" },
 	{
@@ -148,16 +143,26 @@ require("lazy").setup({
 		version = "*", -- Use for stability; omit to use `main` branch for the latest features
 		event = "VeryLazy",
 		config = function()
-			require("nvim-surround").setup({
-				-- Configuration here, or leave empty to use defaults
-			})
+			require("nvim-surround").setup({})
 		end,
 	},
 	{
-		"simrat39/inlay-hints.nvim",
-		config = function()
-			require("inlay-hints").setup()
-		end,
+		"stevearc/dressing.nvim",
+		opts = {},
+	},
+	{ "cohama/lexima.vim" },
+	{ "akinsho/toggleterm.nvim", version = "*", config = true },
+	{
+		"epwalsh/obsidian.nvim",
+		lazy = true,
+		event = {
+			"BufReadPre " .. vim.fn.expand("~") .. "obsidian/**.md",
+			"BufNewFile " .. vim.fn.expand("~") .. "obsidian/**.md",
+		},
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
 	},
 	{
 		"Equilibris/nx.nvim",
@@ -168,10 +173,4 @@ require("lazy").setup({
 			require("nx").setup({})
 		end,
 	},
-	{
-		"stevearc/dressing.nvim",
-		opts = {},
-	},
-	{ "cohama/lexima.vim" },
-	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 })

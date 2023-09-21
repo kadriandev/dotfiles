@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 			if isNx then
 				vim.schedule(function()
 					Map("n", "<leader>cna", ":Telescope nx actions<cr>", { desc = "Actions" })
-					Map("n", "<leader>cng", ":Telescope nx generators<cr>", { desc = "Generators" })
+					Map("n", "<leader>cng", ":Telescope nx workspace_generators<cr>", { desc = "Generators" })
 				end)
 			end
 		end)

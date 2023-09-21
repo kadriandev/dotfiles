@@ -4,7 +4,7 @@ export PATH="$XDG_CONFIG_HOME/.config/bin:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
-export GOPATH=$HOME/personal/go
+export GOPATH=$HOME/projects/go_projects
 
 
 # ~/.tmux/plugins

@@ -1,5 +1,13 @@
 local wk = require("which-key")
 
+wk.setup({
+	plugins = {
+		presets = {
+			g = false,
+		},
+	},
+})
+
 wk.register({
 	f = {
 		name = "Telescope", -- optional group name

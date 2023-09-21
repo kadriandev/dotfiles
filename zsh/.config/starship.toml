@@ -1,7 +1,10 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# Move the directory to the second line
+format = ' $all $character'
+
 [aws]
-format = '\[[($region)]($style)\]'
+format = ''
 
 [aws.region_aliases]
 ca-central-1 = 'CA Central'
