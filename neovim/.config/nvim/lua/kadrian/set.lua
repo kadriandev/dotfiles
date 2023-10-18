@@ -15,6 +15,7 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
+vim.opt.fillchars = "eob: "
 
 vim.opt.updatetime = 50
 

@@ -1,0 +1,106 @@
+#!/usr/bin/env zsh
+
+yabai -m space 1 --label main
+yabai -m space 2 --label sm
+
+# Disable specific apps
+yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^Pulse Secure$" manage=off
+yabai -m rule --add app="^Messages$" manage=off
+yabai -m rule --add app="^Finder$" manage=off
+yabai -m rule --add app="^Raycast$" manage=off
+# yabai -m rule --add app="^Microsoft Teams$" title="^Microsoft Teams Notification$" border=off
+
+# Signals
+# focus window after active space changes
+yabai -m signal --add event=space_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq 'map(select(.[\"is-floating\"] == false)).[0].id')"
+yabai -m signal --add event=display_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq 'map(select(.[\"is-floating\"] == false)).[0].id')"
+
+
+declare -r YABAIRC=$0
+
+function get_first_window {
+    for row in $(yabai -m query --windows --space | jq -r '.[]'); do
+        if [ ${row} | jq '.["is-floating"]' == false ]; then
+            echo ${row} | jq '.id'
+            return
+        fi
+    done
+}
+
+function get_display_aspect_ratio {
+  case $(yabai -m query --displays --display mouse | jq '.frame | (.w)/(.h)*1.2 | round') in
+    (2) echo "16:9" ;;
+    (3) echo "32:9" ;;
+    (*) echo "something:whacky" ;;
+  esac
+}
+
+function get_space_num_visible_windows {
+ yabai -m query --windows --space mouse | \
+   jq 'map(select(.visible == 1 and .floating == 0)) |
+    # deal with how hidden applications apparently still
+    # have "visible" windows
+    if all(.split == "none") then
+      1
+    else
+      map(select(.split != "none")) | length
+    end'
+}
+
+function maybe_center_space {
+  if [[ $(get_display_aspect_ratio) == "32:9" ]]; then
+    case $(get_space_num_visible_windows) in
+      (<0-1>) yabai -m space --padding abs:10:10:300:300 ;;
+      (<2-4>) yabai -m space --padding abs:10:10:100:100 ;;
+      (*)     yabai -m space --padding abs:10:10:10:10   ;;
+    esac
+  else
+    yabai -m space --padding abs:10:10:10:10
+  fi
+}
+
+# ...
+
+function config_signals {
+  for signal (
+    application_launched application_terminated
+    application_hidden application_visible
+    window_created window_destroyed window_minimized window_deminimized
+    space_changed
+    display_resized system_woke
+  ); do
+    yabai -m signal --add event=$signal \
+      action="$YABAIRC maybe_center_space" \
+      label="maybe_center_space-on-$signal"
+  done
+}
+
+function config_main {
+    yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+    sudo yabai --load-sa
+
+    yabai -m config layout                       bsp
+    yabai -m config window_gap                   06
+    yabai -m config mouse_follows_focus on
+    yabai -m config window_placement second_child
+    yabai -m config window_topmost on
+    yabai -m config window_shadow float
+
+    # padding
+    yabai -m config top_padding 12
+    yabai -m config bottom_padding 12
+    yabai -m config window_gap 12
+
+    maybe_center_space
+    config_signals
+    get_first_window
+}
+
+if [[ $# == 0 ]]; then
+  config_main
+else
+  $1
+fi
+

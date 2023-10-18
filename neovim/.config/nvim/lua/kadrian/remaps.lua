@@ -13,8 +13,6 @@ Map("n", "<leader>w", "<cmd>w<cr>")
 
 Map("n", "<leader>qq", "<cmd>qa<cr>")
 
-Map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>")
-
 Map("n", "<leader>x", "<cmd>bd<cr>")
 
 Map("i", "<C-h>", "<Left>")

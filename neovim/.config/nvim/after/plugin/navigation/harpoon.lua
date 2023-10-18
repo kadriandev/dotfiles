@@ -1,10 +1,10 @@
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 
-Map("n", "<leader>a", mark.add_file, { desc = "Add to Harpoon" })
+Map("n", "<leader>ja", mark.add_file, { desc = "Add to Harpoon" })
 Map("n", "<C-e>", ui.toggle_quick_menu)
 
-Map("n", "<C-]>", function()
+Map("n", "<C-n>", function()
 	ui.nav_next()
 end)
 

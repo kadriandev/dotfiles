@@ -16,3 +16,4 @@ export PATH="`python3 -m site --user-base`/bin:$PATH"
 export PATH=$PATH:$GOROOT
 
 
+. "$HOME/.cargo/env"

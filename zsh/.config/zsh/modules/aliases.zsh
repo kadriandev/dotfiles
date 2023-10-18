@@ -3,6 +3,8 @@ alias c="clear"
 alias ls="exa -1 --icons -l -h --no-time"
 alias grep="rg"
 alias v="nvim"
+alias pip=pip3
+
 
 # Git aliases
 alias gco="git checkout"

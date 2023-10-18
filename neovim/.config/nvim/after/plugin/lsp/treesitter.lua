@@ -1,19 +1,19 @@
-local swap_next, swap_prev = (function()
-	local swap_objects = {
-		p = "@parameter.inner",
-		f = "@function.outer",
-		c = "@class.outer",
-	}
-
-	local n, p = {}, {}
-	for key, obj in pairs(swap_objects) do
-		n[string.format("<A-n><A-%s>", key)] = obj
-		p[string.format("<A-p><A-%s>", key)] = obj
-	end
-
-	return n, p
-end)()
-
+-- local swap_next, swap_prev = (function()
+-- 	local swap_objects = {
+-- 		p = "@parameter.inner",
+-- 		f = "@function.outer",
+-- 		c = "@class.outer",
+-- 	}
+--
+-- 	local n, p = {}, {}
+-- 	for key, obj in pairs(swap_objects) do
+-- 		n[string.format("<A-n><A-%s>", key)] = obj
+-- 		p[string.format("<A-p><A-%s>", key)] = obj
+-- 	end
+--
+-- 	return n, p
+-- end)()
+--
 require("nvim-treesitter.configs").setup({
 	ensure_installed = { "c", "lua", "javascript", "go", "json", "query", "tsx", "markdown", "markdown_inline" },
 	sync_install = false,

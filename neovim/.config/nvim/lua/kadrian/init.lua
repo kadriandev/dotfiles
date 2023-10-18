@@ -1,9 +1,8 @@
-require("kmonteiro.set")
-require("kmonteiro.remaps")
-require("kmonteiro.autocmds")
+require("kadrian.set")
+require("kadrian.remaps")
+require("kadrian.autocmds")
 
 require("lazy").setup({
-	{ dir = "~/projects/nx-tools.nvim" },
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.2",
@@ -15,7 +14,6 @@ require("lazy").setup({
 		name = "catppuccin",
 		priority = 1000,
 	},
-	{ "rebelot/kanagawa.nvim", lazy = false, priority = 1000 },
 	{
 		-- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
@@ -42,14 +40,6 @@ require("lazy").setup({
 		},
 	},
 	{ "jose-elias-alvarez/null-ls.nvim" },
-	{
-		"nvim-tree/nvim-tree.lua",
-		version = "*",
-		lazy = false,
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-	},
 	{ "jose-elias-alvarez/typescript.nvim" },
 	{
 		"folke/which-key.nvim",
@@ -84,12 +74,6 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"windwp/nvim-ts-autotag",
-		config = function()
-			require("nvim-ts-autotag").setup()
-		end,
-	},
-	{
 		"weilbith/nvim-code-action-menu",
 		cmd = "CodeActionMenu",
 	},
@@ -110,7 +94,6 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{ "windwp/nvim-ts-autotag" },
 	{
 		"goolord/alpha-nvim",
 		event = "VimEnter",
@@ -120,21 +103,6 @@ require("lazy").setup({
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {},
-	},
-	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		opts = {
-			-- add any options here
-		},
-		dependencies = {
-			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-			"MunifTanjim/nui.nvim",
-			-- OPTIONAL:
-			--   `nvim-notify` is only needed, if you want to use the notification view.
-			--   If not available, we use `mini` as the fallback
-			"rcarriga/nvim-notify",
-		},
 	},
 	{ "folke/neodev.nvim", opts = {} },
 	{ "lukas-reineke/indent-blankline.nvim" },
@@ -165,12 +133,25 @@ require("lazy").setup({
 		},
 	},
 	{
-		"Equilibris/nx.nvim",
-		requires = {
-			"nvim-telescope/telescope.nvim",
+		"stevearc/oil.nvim",
+		opts = {},
+		-- Optional dependencies
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup()
+		end,
+	},
+	{
+		"Exafunction/codeium.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"hrsh7th/nvim-cmp",
 		},
 		config = function()
-			require("nx").setup({})
+			require("codeium").setup({})
 		end,
 	},
 })

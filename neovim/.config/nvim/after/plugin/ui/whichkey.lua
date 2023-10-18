@@ -20,10 +20,6 @@ wk.register({
 	c = {
 		name = "Code",
 		a = { ":CodeActionMenu<cr>", "Code Action" },
-		n = { name = "Nx" },
-	},
-	d = {
-		name = "Diagnostic",
 		t = { ":Trouble<cr>", "Trouble" },
 	},
 }, { prefix = "<leader>" })
