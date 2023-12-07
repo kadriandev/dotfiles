@@ -1,6 +1,8 @@
 .DS_Store
 
 bin/*
+!bin/t
 
-tmux/plugins
+tmux/plugins/*
+!tmux/plugins/tpm
 
