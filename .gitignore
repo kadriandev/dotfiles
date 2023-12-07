@@ -1,4 +1,2 @@
 .DS_Store
-
-zsh/.config/zsh/.zcompdump*
-zsh/.config/zsh/.zsh_*
+bin
