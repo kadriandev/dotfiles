@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+user="etr\\kmonteir"
+servers=("MKHD-TRP-OCR01" "MKHD-TRP-OCR02" "MKHD-TRP-OCR03")
+choice=$(printf "%s\n" "${servers[@]}" | fzf --bind=ctrl-j:down,ctrl-k:up)
+ssh $user@$choice

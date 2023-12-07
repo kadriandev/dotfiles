@@ -1,0 +1,17 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+plugins=(git nvm zsh-autosuggestions zsh-syntax-highlighting)
+source $ZSH/oh-my-zsh.sh # Needs to be after plugins list, but before module and tab bindings
+
+# Load seperated config files
+for conf in "$HOME/.config/zsh/modules/"*.zsh; do
+  source "${conf}"
+done
+unset conf
+
+bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
+bindkey '^I'   complete-word       # tab          | complete
+bindkey -s '\C-t' '\etms\n'
+
+eval "$(starship init zsh)"
+
