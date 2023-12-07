@@ -17,7 +17,9 @@ link ~/dotfiles/zsh/starship.toml ~/.config/starship.toml
 
 link ~/dotfiles/alacritty ~/.config/alacritty
 
-link ~/dotfiles/tmux ~/.config/tmux
+mkdir -p ~/.config/tmux
+link ~/dotfiles/tmux/tmux.conf ~/.config/tmux/tmux.conf
+
 link ~/dotfiles/bin ~/.local/bin
 
 if [ "$(uname)" = "Darwin" ]; then
