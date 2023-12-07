@@ -1,0 +1,130 @@
+#!/usr/bin/env sh
+
+##########################################
+#           SPACES (CMD + CTRL)
+# ########################################
+
+# Quick open application
+cmd - return : open -a "Alacritty" 
+cmd + ctrl - return : open -a "Google Chrome" 
+
+# Keys [M , . /]
+cmd + ctrl - 0x2E : open -a "Microsoft Teams (work or school)" && skhd -k "cmd - 1" # Teams (Activity)
+cmd + ctrl - 0x2B : open -a "Microsoft Teams (work or school)" && skhd -k "cmd - 2" # Teams (Chat)
+cmd + ctrl - 0x2F : open -a "Microsoft Outlook" && skhd -k "cmd - 2"           # Outlook   (Calendar)
+cmd + ctrl - 0x2C : open -a "Microsoft Outlook" && skhd -k "cmd - 1"           # Outlook   (Mail)
+
+cmd + ctrl - l : yabai -m space --focus next
+cmd + ctrl - h : yabai -m space --focus prev
+# cmd + ctrl - tab : yabai -m space --focus recent
+
+# Moving Windows across spaces
+cmd + ctrl - 1 : yabai -m window --space 1 --focus && sketchybar --trigger windows_on_spaces
+cmd + ctrl - 2 : yabai -m window --space 2 --focus && sketchybar --trigger windows_on_spaces
+cmd + ctrl - 3 : yabai -m window --space 3 --focus && sketchybar --trigger windows_on_spaces
+cmd + ctrl - 4 : yabai -m window --space 4 --focus && sketchybar --trigger windows_on_spaces
+
+cmd + ctrl - n : yabai -m window --space next --focus
+cmd + ctrl - p : yabai -m window --space prev --focus
+
+cmd + ctrl - c : yabai -m space --create && yabai -m space --focus last
+cmd + ctrl - n : yabai -m space --create && yabai -m window --space last --focus 
+cmd + ctrl - x : yabai -m space --destroy
+
+##########################################
+#           WINDOW NAVIGATION (CMD)
+# ########################################
+
+cmd - tab : yabai -m space --focus recent
+# maximize a window
+cmd - m : yabai -m window --toggle zoom-fullscreen; sketchybar --trigger window_focus
+
+# change window focus within space
+cmd - j : yabai -m window --focus south
+cmd - k : yabai -m window --focus north
+cmd - h : yabai -m window --focus west
+cmd - l : yabai -m window --focus east
+
+##########################################
+#           WINDOW ARRANGMENT (ALT)
+# ########################################
+
+alt - j : yabai -m window --warp south
+alt - k : yabai -m window --warp north
+alt - h : yabai -m window --warp west
+alt - l : yabai -m window --warp east
+
+alt + shift - j : yabai -m window --swap south
+alt + shift - k : yabai -m window --swap north
+alt + shift - h : yabai -m window --swap west
+alt + shift - l : yabai -m window --swap east
+
+alt - b : yabai -m space --balance
+
+# -- Modifying the Layout --
+alt - r : yabai -m space --rotate 270
+alt - y : yabai -m space --mirror y-axis
+alt - x : yabai -m space --mirror x-axis
+
+alt - space : yabai -m window --toggle float; sketchybar --trigger window_focus
+
+
+##########################################
+#           APPLICATION SPECIFIC (CTRL)
+# ########################################
+ctrl - j [
+    "Microsoft Teams (work or school)": skhd -k "down"
+    "Microsoft Outlook": skhd -k "ctrl - 0x1E"
+]
+
+ctrl - k [
+    "Microsoft Teams (work or school)": skhd -k "up"
+    "Microsoft Outlook": skhd -k "ctrl - 0x21"
+]
+
+ctrl - l [
+    "Google Chrome": skhd -k "cmd + alt - right"
+]
+
+ctrl - h [
+    "Google Chrome": skhd -k "cmd + alt - left"
+]
+
+ctrl - w [
+    "Google Chrome": skhd -k "cmd - w"
+]
+
+ctrl - t [
+    "Google Chrome": skhd -k "cmd - t"
+]
+
+ctrl - r [
+    "Google Chrome": skhd -k "cmd - r"
+]
+
+ctrl - s [
+    "Google Chrome": skhd -k "ctrl - 0x60"
+]
+
+ctrl - u [
+    "Google Chrome": skhd -k "shift - space"
+]
+
+ctrl - d [
+    "Google Chrome": skhd -k "space"
+    "Microsoft Outlook": skhd -k "cmd - backspace"
+]
+
+
+##########################################
+#           MISC (CTRL + ALT)
+# ########################################
+ctrl + alt - s : yabai --start-service
+ctrl + alt - q : yabai --stop-service
+ctrl + alt - r : yabai --restart-service
+
+# change focus between external displays (left and right)
+ctrl + alt - l : yabai -m display --focus next
+ctrl + alt - h : yabai -m display --focus prev
+
+
