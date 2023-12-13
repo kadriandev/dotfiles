@@ -1,0 +1,208 @@
+#!/bin/sh
+
+source "$CONFIG_DIR/colors.sh" # Loads all defined icons
+source "$CONFIG_DIR/icons.sh" # Loads all defined icons
+
+FONT="JetBrainsMono Nerd Font"
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
+
+POPUP_OFF="sketchybar --set apple popup.drawing=off"
+POPUP_CLICK_SCRIPT="sketchybar --set \$NAME popup.drawing=toggle"
+
+bar=(
+    height=30
+    y_offset=4
+    blur_radius=0
+    position=top
+    padding_left=10
+    padding_right=10
+    margin=3
+    corner_radius=8
+    shadow=off
+    color=$TRANSPARENT_ACCENT
+    popup.background.border_width=2
+    popup.background.corner_radius=9
+    popup.background.color=$PRIMARY_1
+    popup.background.border_color=$PRIMARY_1
+    popup.blur_radius=20
+    popup.background.shadow.drawing=on
+)
+
+defaults=(
+  updates=when_shown
+  icon.font="$FONT:Bold:20.0"
+  icon.color=$ICON_COLOR
+  icon.highlight_color=0xff728FCB
+  icon.padding_left=5
+  icon.padding_right=10
+  icon.y_offset=0
+  label.font="$FONT:Semibold:16.0"
+  label.color=0xffCAD3F5
+  label.padding_right=10
+  background.corner_radius=8
+  background.border_width=2
+  popup.background.border_width=2
+  popup.background.corner_radius=9
+  popup.background.color=$PRIMARY_1
+  popup.background.border_color=$PRIMARY_1
+  popup.blur_radius=20
+  popup.background.shadow.drawing=on
+)
+
+############## BAR ##############
+sketchybar --bar "${bar[@]}"
+sketchybar --default "${defaults[@]}"
+
+############## ITEMS ##############
+sketchybar --add item           apple left                             \
+           --set apple          icon=$APPLE                                 \
+                                icon.font="$FONT:Regular:16.0"                \
+                                icon.color=$BLUE                            \
+                                icon.y_offset=0                             \
+                                icon.padding_left=6                         \
+                                icon.y_offset=0                             \
+                                padding_right=15                            \
+                                padding_left=4                              \
+                                label.drawing=off                           \
+                                click_script="$POPUP_CLICK_SCRIPT"          \
+                                                                            \
+           --add item           apple.prefs popup.apple                \
+           --set apple.prefs    icon=$PREFERENCES                           \
+                                icon.font="$FONT:Regular:12.0"              \
+                                icon.padding_right=20                       \
+                                icon.padding_left=10                        \
+                                label="Settings"                            \
+                                label.font="Hack Nerd Font:Bold:12.0"       \
+                                click_script="open -a 'System Settings';
+                                              $POPUP_OFF"                   \
+                                                                            \
+           --add item           apple.activity popup.apple             \
+           --set apple.activity icon=$ACTIVITY                              \
+                                icon.font="$FONT:Regular:12.0"              \
+                                icon.padding_right=20                       \
+                                icon.padding_left=10                        \
+                                label="Activity"                            \
+                                label.font="Hack Nerd Font:Bold:12.0"       \
+                                click_script="open -a 'Activity Monitor';
+                                              $POPUP_OFF"                   \
+                                                                            \
+           --add item           apple.lock popup.apple                 \
+           --set apple.lock     icon=$LOCK                                  \
+                                icon.font="$FONT:Regular:12.0"              \
+                                icon.padding_right=20                       \
+                                icon.padding_left=10                        \
+                                label="Lock Screen"                         \
+                                label.font="Hack Nerd Font:Bold:12.0"       \
+                                label.padding_right=20                      \
+                                click_script="pmset displaysleepnow;
+                                              $POPUP_OFF"
+
+
+SPACE_ICONS=("一" "二" "三" "四" "五" "六" "七" "八" "九" "十")
+SPACES=()
+
+for i in "${!SPACE_ICONS[@]}"; do
+      sid=$(($i + 1))
+      SPACES+=(space.$sid)
+      sketchybar --add space space.$sid left \
+            --set space.$sid associated_space=$sid \
+            icon=${SPACE_ICONS[i]} \
+            icon.color=$WHITE \
+            icon.font="$FONT:bold:17.0" \
+            icon.padding_left=12 \
+            icon.padding_right=12 \
+            icon.highlight_color=0xffE48FA8 \
+            background.padding_left=-3 \
+            background.padding_right=-3 \
+            background.color=0x003C3E4F \
+            background.drawing=on \
+            click_script="yabai -m space --focus $sid" \
+            background.corner_radius=8\
+            label.drawing=off 
+done
+
+############## ITEM DEFAULTS ###############
+sketchybar --default label.padding_left=6 \
+      label.padding_right=6 \
+      icon.padding_left=6 \
+      icon.padding_right=6 \
+      icon.font="$FONT:Bold:20.0" \
+      label.font="$FONT:Bold:16.0" \
+      background.height=30  \
+      background.padding_right=4 \
+      background.padding_left=4 \
+      background.corner_radius=6
+
+
+############## MIDDLE RIGHT ITEMS ##############
+sketchybar --add event spotify_change $SPOTIFY_EVENT \
+    --add item spotify e \
+    --set spotify \
+    icon= \
+    icon.y_offset=1 \
+    icon.font="$FONT_FACE:Bold:20.0" \
+    label.drawing=off \
+    label.padding_left=3 \
+    script="$PLUGIN_DIR/spotify.sh" \
+    --subscribe spotify spotify_change mouse.clicked
+
+############## RIGHT ITEMS ##############
+sketchybar --add item time right \
+    --set time update_freq=20 \
+    icon.drawing=off \
+    script="$PLUGIN_DIR/time.sh" \
+    background.color=0x003C3E4F \
+    background.padding_left=-6
+
+sketchybar --add item clock_icon right \
+      --set clock_icon icon= \
+      icon.color=$ICON_COLOR \
+      label.drawing=off \
+      padding_left=4 \
+      padding_right=10 \
+      background.color=0xff92B3F5 \
+
+sketchybar --add item date right \
+      --set date update_freq=120 \
+      icon.drawing=off  \
+      padding_right=10 \
+      script="$PLUGIN_DIR/date.sh"
+
+sketchybar --add item date_icon right \
+    --set date_icon icon=󰃭 \
+    icon.color=$ICON_COLOR \
+    padding_left=8 \
+    label.drawing=off \
+    background.color=0xffF5A97E \
+
+
+sketchybar --add item battery right \
+      --set battery update_freq=20 \
+      icon.drawing=off \
+      script="$PLUGIN_DIR/battery.sh" \
+      background.color=0x003C3E4F \
+      background.padding_left=0
+
+sketchybar --add item power_logo right \
+      --set power_logo icon= \
+      icon.color=$ICON_COLOR \
+      label.drawing=off \
+      background.color=0xffB3E1A7
+
+sketchybar --add item volume right \
+      --set volume update_freq=10 \
+      icon.drawing=off \
+      script="$PLUGIN_DIR/volume.sh" \
+      background.color=0x003C3E4F \
+      background.padding_left=0
+
+sketchybar --add item volume_icon right \
+      --set volume_icon icon=󰕾 \
+      icon.color=$ICON_COLOR \
+      label.drawing=off \
+      background.color=0xffC6A0F6\
+
+
+sketchybar --update
+echo "sketchybar configuration loaded..."

@@ -14,3 +14,4 @@ esac
 # pnpm end
 
 export FZF_DEFAULT_OPTS='--bind=ctrl-k:up,ctrl-j:down'
+. "$HOME/.cargo/env"

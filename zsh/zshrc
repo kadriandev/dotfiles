@@ -1,6 +1,6 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-plugins=(git nvm zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(fzf-tab git nvm zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh # Needs to be after plugins list, but before module and tab bindings
 
 # Load seperated config files
@@ -10,8 +10,22 @@ done
 unset conf
 
 bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
-bindkey '^I'   complete-word       # tab          | complete
-bindkey -s '\C-t' '\etms\n'
+# bindkey '^I'   complete-word       # tab          | complete
+# bindkey -s '\C-t' '\etms\n'
+
+
+## disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# preview directory's content with exa when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+# switch group using `,` and `.`
+zstyle ':fzf-tab:*' switch-group ',' '.' 
 
 eval "$(starship init zsh)"
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
