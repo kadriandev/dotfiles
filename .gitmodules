@@ -1,3 +1,7 @@
 [submodule "nvim"]
 	path = nvim
 	url = git@github.com:kadriandev/nvim.git
+
+[submodule "tpm"]
+	path = tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm.git 
