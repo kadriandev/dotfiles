@@ -18,7 +18,9 @@ link ~/dotfiles/zsh/starship.toml ~/.config/starship.toml
 link ~/dotfiles/alacritty ~/.config/alacritty
 
 mkdir -p ~/.config/tmux
+mkdir -p ~/.config/tmux/plugins
 link ~/dotfiles/tmux/tmux.conf ~/.config/tmux/tmux.conf
+link ~/dotfiles/tmux/plugins/tpm ~/.config/tmux/plugins/tpm
 
 link ~/dotfiles/bin ~/.local/bin
 
