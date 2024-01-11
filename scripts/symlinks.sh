@@ -25,7 +25,7 @@ link ~/dotfiles/tmux/plugins/tpm ~/.config/tmux/plugins/tpm
 mkdir -p ~/.config/tmux/plugins
 link ~/dotfiles/tmux/plugins/tpm ~/.config/tmux/plugins/tpm
 
-link ~/dotfiles/bin ~/.local/bin
+link ~/dotfiles/bin/* ~/.local/bin/
 
 if [ "$(uname)" = "Darwin" ]; then
     # Install Homebrew formulae
