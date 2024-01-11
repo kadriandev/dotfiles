@@ -83,7 +83,7 @@ function config_main {
     
     yabai -m config window_opacity off
     yabai -m config active_window_opacity 1.0
-    yabai -m config normal_window_opacity 0.7
+    yabai -m config normal_window_opacity 0.9
 
     # padding
     yabai -m config external_bar all:10:10

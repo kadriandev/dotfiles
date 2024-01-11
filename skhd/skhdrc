@@ -1,28 +1,28 @@
 #!/usr/bin/env sh
 
 ##########################################
-#           SPACES (CMD + CTRL)
+#           SPACES (CMD + SHIFT)
 # ########################################
 
 # Quick open application
 cmd - return : open -a "Alacritty" 
-cmd + ctrl - return : open -a "Google Chrome" 
+cmd + shift - return : open -a "Google Chrome" 
 
 # Keys [M , . /]
-cmd + ctrl - 0x2E : open -a "Microsoft Teams (work or school)" && skhd -k "cmd - 1" # Teams (Activity)
-cmd + ctrl - 0x2B : open -a "Microsoft Teams (work or school)" && skhd -k "cmd - 2" # Teams (Chat)
-cmd + ctrl - 0x2F : open -a "Microsoft Outlook" && skhd -k "cmd - 2"           # Outlook   (Calendar)
-cmd + ctrl - 0x2C : open -a "Microsoft Outlook" && skhd -k "cmd - 1"           # Outlook   (Mail)
+cmd + shift - 0x2E : open -a "Microsoft Teams (work or school)" && skhd -k "cmd - 1" # Teams (Activity)
+cmd + shift - 0x2B : open -a "Microsoft Teams (work or school)" && skhd -k "cmd - 2" # Teams (Chat)
+cmd + shift - 0x2F : open -a "Microsoft Outlook" && skhd -k "cmd - 2"           # Outlook   (Calendar)
+cmd + shift - 0x2C : open -a "Microsoft Outlook" && skhd -k "cmd - 1"           # Outlook   (Mail)
 
-cmd + ctrl - l : yabai -m space --focus next
-cmd + ctrl - h : yabai -m space --focus prev
+cmd + shift - l : yabai -m space --focus next
+cmd + shift - h : yabai -m space --focus prev
 # cmd + ctrl - tab : yabai -m space --focus recent
 
 # Moving Windows across spaces
-cmd + ctrl - 1 : yabai -m window --space 1 --focus && sketchybar --trigger windows_on_spaces
-cmd + ctrl - 2 : yabai -m window --space 2 --focus && sketchybar --trigger windows_on_spaces
-cmd + ctrl - 3 : yabai -m window --space 3 --focus && sketchybar --trigger windows_on_spaces
-cmd + ctrl - 4 : yabai -m window --space 4 --focus && sketchybar --trigger windows_on_spaces
+cmd + shift - 1 : yabai -m window --space 1 --focus && sketchybar --trigger windows_on_spaces
+cmd + shift - 2 : yabai -m window --space 2 --focus && sketchybar --trigger windows_on_spaces
+cmd + shift - 3 : yabai -m window --space 3 --focus && sketchybar --trigger windows_on_spaces
+cmd + shift - 4 : yabai -m window --space 4 --focus && sketchybar --trigger windows_on_spaces
 
 cmd + ctrl - n : yabai -m window --space next --focus
 cmd + ctrl - p : yabai -m window --space prev --focus
@@ -49,15 +49,15 @@ cmd - l : yabai -m window --focus east
 #           WINDOW ARRANGMENT (ALT)
 # ########################################
 
-alt - j : yabai -m window --warp south
-alt - k : yabai -m window --warp north
-alt - h : yabai -m window --warp west
-alt - l : yabai -m window --warp east
+# alt - j : yabai -m window --warp south
+# alt - k : yabai -m window --warp north
+# alt - h : yabai -m window --warp west
+# alt - l : yabai -m window --warp east
 
-alt + shift - j : yabai -m window --swap south
-alt + shift - k : yabai -m window --swap north
-alt + shift - h : yabai -m window --swap west
-alt + shift - l : yabai -m window --swap east
+alt - j : yabai -m window --swap south
+alt - k : yabai -m window --swap north
+alt - h : yabai -m window --swap west
+alt - l : yabai -m window --swap east
 
 alt - b : yabai -m space --balance
 
@@ -68,49 +68,56 @@ alt - x : yabai -m space --mirror x-axis
 
 alt - space : yabai -m window --toggle float; sketchybar --trigger window_focus
 
+# increase window size
+alt + shift - k : yabai -m window --resize top:0:20
+alt + shift - l : yabai -m window --resize left:20:0
+
+# decrease window size
+alt + shift - j : yabai -m window --resize top:0:-20
+alt + shift - h : yabai -m window --resize left:-20:0
 
 ##########################################
 #           APPLICATION SPECIFIC (CTRL)
 # ########################################
-ctrl - j [
+hyper - j [
     "Microsoft Teams (work or school)": skhd -k "down"
     "Microsoft Outlook": skhd -k "ctrl - 0x1E"
 ]
 
-ctrl - k [
+hyper - k [
     "Microsoft Teams (work or school)": skhd -k "up"
     "Microsoft Outlook": skhd -k "ctrl - 0x21"
 ]
 
-ctrl - l [
-    "Google Chrome": skhd -k "cmd + alt - right"
+hyper - l [
+    "Google Chrome": skhd -k "ctrl - tab"
 ]
 
-ctrl - h [
-    "Google Chrome": skhd -k "cmd + alt - left"
+hyper - h [
+    "Google Chrome": skhd -k "ctrl + shift - tab"
 ]
 
-ctrl - w [
+hyper - w [
     "Google Chrome": skhd -k "cmd - w"
 ]
 
-ctrl - t [
+hyper - t [
     "Google Chrome": skhd -k "cmd - t"
 ]
 
-ctrl - r [
+hyper - r [
     "Google Chrome": skhd -k "cmd - r"
 ]
 
-ctrl - s [
+hyper - s [
     "Google Chrome": skhd -k "ctrl - 0x60"
 ]
 
-ctrl - u [
+hyper - u [
     "Google Chrome": skhd -k "shift - space"
 ]
 
-ctrl - d [
+hyper - d [
     "Google Chrome": skhd -k "space"
     "Microsoft Outlook": skhd -k "cmd - backspace"
 ]
