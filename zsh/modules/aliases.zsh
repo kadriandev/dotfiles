@@ -1,6 +1,6 @@
 # Replace Command Line Tools
 alias c="clear"
-alias ls="exa -1 --icons -l -h --no-time"
+alias ls="eza -1 --icons -l -h --no-time"
 alias grep="rg"
 alias v="nvim"
 alias pip=pip3

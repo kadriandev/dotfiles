@@ -18,11 +18,11 @@
                 },
                 "rules": [
                     {
-                        "description": "Change left_control key to Hyper(cmd+ctrl+option+shift)",
+                        "description": "Change caps_lock key to command+control+option+shift. (Post escape key when pressed alone)",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "left_control",
+                                    "key_code": "caps_lock",
                                     "modifiers": {
                                         "optional": [
                                             "any"
@@ -37,6 +37,11 @@
                                             "left_control",
                                             "left_option"
                                         ]
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "escape"
                                     }
                                 ],
                                 "type": "basic"
@@ -63,56 +68,6 @@
                                 "to_if_alone": [
                                     {
                                         "key_code": "escape"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Change right_option key to Meh(control+option+shift)",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "right_option",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_shift",
-                                        "modifiers": [
-                                            "left_control",
-                                            "left_option"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Change fn key to Meh(control+option+shift)",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "fn",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_shift",
-                                        "modifiers": [
-                                            "left_control",
-                                            "left_option"
-                                        ]
                                     }
                                 ],
                                 "type": "basic"
@@ -203,36 +158,6 @@
                             "to": [
                                 {
                                     "key_code": "left_command"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "right_command"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "right_option"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "right_option"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "right_command"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "left_control"
-                            },
-                            "to": [
-                                {
-                                    "apple_vendor_top_case_key_code": "keyboard_fn"
                                 }
                             ]
                         }
@@ -379,7 +304,7 @@
                     },
                     "to": [
                         {
-                            "consumer_key_code": "display_brightness_decrement"
+                            "key_code": "f1"
                         }
                     ]
                 },
@@ -389,7 +314,7 @@
                     },
                     "to": [
                         {
-                            "consumer_key_code": "display_brightness_increment"
+                            "key_code": "f2"
                         }
                     ]
                 },
@@ -399,7 +324,7 @@
                     },
                     "to": [
                         {
-                            "apple_vendor_keyboard_key_code": "mission_control"
+                            "key_code": "f3"
                         }
                     ]
                 },
@@ -409,7 +334,7 @@
                     },
                     "to": [
                         {
-                            "apple_vendor_keyboard_key_code": "dashboard"
+                            "key_code": "f4"
                         }
                     ]
                 },
@@ -419,7 +344,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "vk_none"
+                            "key_code": "f5"
                         }
                     ]
                 },

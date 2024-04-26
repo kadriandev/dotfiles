@@ -225,16 +225,6 @@
                                     "key_code": "right_command"
                                 }
                             ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "left_control"
-                            },
-                            "to": [
-                                {
-                                    "apple_vendor_top_case_key_code": "keyboard_fn"
-                                }
-                            ]
                         }
                     ],
                     "treat_as_built_in_keyboard": false
@@ -429,7 +419,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "f6"
+                            "key_code": "vk_none"
                         }
                     ]
                 },

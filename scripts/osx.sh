@@ -18,7 +18,7 @@ brew install --cask sf-symbols
 brew tap FelixKratz/formulae
 
 # Install binaries
-brew install exa
+brew install eza
 brew install neovim
 brew install tmux
 brew install lazygit
