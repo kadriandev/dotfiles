@@ -92,12 +92,20 @@ ctrl - k [
     "Microsoft Outlook": skhd -k "ctrl - 0x21"
 ]
 
-ctrl - n [
+ctrl - 0x21 [
     "Google Chrome": skhd -k "ctrl + shift - tab"
 ]
 
-ctrl - p [
+ctrl - 0x1E [
     "Google Chrome": skhd -k "ctrl - tab"
+]
+
+ctrl - n [
+    "Google Chrome": skhd -k "down"
+]
+
+ctrl - p [
+    "Google Chrome": skhd -k "up"
 ]
 
 ctrl - h [
@@ -114,10 +122,6 @@ ctrl - w [
 
 ctrl - t [
     "Google Chrome": skhd -k "cmd - t"
-]
-
-ctrl - d [
-    "Google Chrome": skhd -k "ctrl - 0x60"
 ]
 
 ctrl - u [
