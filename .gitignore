@@ -1,8 +1,9 @@
-.DS_Store
+**/.DS_Store
 
 bin/*
 !bin/t
 
 tmux/plugins/*
 !tmux/plugins/tpm
+karabiner/automatic_backups
 
