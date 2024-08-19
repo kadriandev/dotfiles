@@ -16,6 +16,8 @@ link ~/dotfiles/zsh/modules ~/.config/zsh/modules
 link ~/dotfiles/zsh/starship.toml ~/.config/starship.toml
 
 link ~/dotfiles/alacritty ~/.config/alacritty
+link ~/dotfiles/wezterm ~/.config/wezterm
+link ~/dotfiles/taskwarrior ~/.config/taskwarrior
 
 mkdir -p ~/.config/tmux
 mkdir -p ~/.config/tmux/plugins
