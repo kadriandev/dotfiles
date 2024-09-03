@@ -1,0 +1,19 @@
+[[session]]
+name = "downloads 📥"
+path = "~/Downloads"
+startup_command = "ls"
+
+[[session]]
+name = "dotfiles"
+path = "~/dotfiles"
+startup_command = "nvim -c ':Telescope find_files'"
+
+[[session]]
+name = "notes"
+path = "~/obsidian"
+startup_command = "nvim -c ':Telescope find_files'"
+
+[[session]]
+name = "sal"
+path = "~/work/tnt/tnt-sal"
+startup_command = "nvim -c ':Telescope find_files'"

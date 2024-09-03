@@ -1,10 +1,8 @@
 #!/bin/bash
 
 # Replace Command Line Tools
-alias c="clear"
 alias ls="eza -1 --icons -l -h --no-time"
 alias grep="rg"
-alias v="nvim"
 alias cat="bat"
 alias pip=pip3
 
