@@ -1,5 +1,6 @@
 local colors = require("colors")
 local icons = require("icons")
+local settings = require("settings")
 
 sbar.add("item", "apple", {
 	icon = {
@@ -11,3 +12,5 @@ sbar.add("item", "apple", {
 	label = { drawing = false },
 	click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0",
 })
+
+sbar.add("item", { position = "left", width = settings.group_paddings })

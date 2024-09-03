@@ -57,12 +57,12 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 5
-inner.vertical =   5
-outer.left =       5
-outer.bottom =     5
-outer.top = [{ monitor."CB342CK" = 40 }, 15]
-outer.right =      5
+inner.horizontal = 10
+inner.vertical =   10
+outer.left =  [{ monitor."CB342CK" = 400 }, 15]
+outer.right =  [{ monitor."CB342CK" = 400 }, 15]
+outer.top = [{ monitor."CB342CK" = 40 }, { monitor."LEN P27u-10" = 40 }, 15]
+outer.bottom =     10
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -124,14 +124,16 @@ ctrl-alt-b = 'workspace 📡'
 ctrl-alt-m = 'workspace 💬'
 ctrl-alt-o = 'workspace 📧'
 ctrl-alt-s = 'workspace 🎵'
+ctrl-alt-p = 'workspace 􀞙 '
 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-ctrl-cmd-alt-t = 'move-node-to-workspace 💻'
+ctrl-cmd-alt-t = 'move-node-to-workspace 💻' # mnemonics T - Terminal
 ctrl-cmd-alt-b = 'move-node-to-workspace 📡' # mnemonics B - Browser
 ctrl-cmd-alt-m = 'move-node-to-workspace 💬' # mnemonics M - Message
 ctrl-cmd-alt-o = 'move-node-to-workspace 📧' # mnemonics O - Outlook
-ctrl-cmd-alt-s = 'move-node-to-workspace 🎵' # mnemonics O - Outlook
+ctrl-cmd-alt-s = 'move-node-to-workspace 🎵' # mnemonics S - Spotify
+ctrl-cmd-alt-p = 'move-node-to-workspace 􀞙 ' # mnemonics P - Password Manager
 
 ctrl-cmd-alt-1 = 'move-node-to-workspace 1'
 ctrl-cmd-alt-2 = 'move-node-to-workspace 2'
@@ -179,3 +181,7 @@ run = 'move-node-to-workspace 📧' # mnemonics O - Outlook
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
 run = 'move-node-to-workspace 🎵' # mnemonics O - Outlook
+
+[[on-window-detected]]
+if.app-id = 'com.bitwarden.desktop'
+run = 'move-node-to-workspace 􀞙 ' # mnemonics P - Password

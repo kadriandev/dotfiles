@@ -1,0 +1,9 @@
+# ~/.tmuxinator/sal.yml
+
+name: projects
+root: ~/projects
+windows:
+  - projects:
+      layout: main-vertical
+      panes:
+        - fzf

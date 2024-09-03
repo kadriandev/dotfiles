@@ -18,11 +18,14 @@ link ~/dotfiles/zsh/starship.toml ~/.config/starship.toml
 link ~/dotfiles/alacritty ~/.config/alacritty
 link ~/dotfiles/wezterm ~/.config/wezterm
 link ~/dotfiles/taskwarrior ~/.config/taskwarrior
+link ~/dotfiles/tmuxinator ~/.config/tmuxinator
+link ~/dotfiles/tmux ~/.config/tmux
+ln -s ~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/KadrianCloud ~/obsidian
 
-mkdir -p ~/.config/tmux
-mkdir -p ~/.config/tmux/plugins
-link ~/dotfiles/tmux/tmux.conf ~/.config/tmux/tmux.conf
-link ~/dotfiles/tmux/plugins/tpm ~/.config/tmux/plugins/tpm
+# mkdir -p ~/.config/tmux
+# mkdir -p ~/.config/tmux/plugins
+# link ~/dotfiles/tmux/tmux.conf ~/.config/tmux/tmux.conf
+# link ~/dotfiles/tmux/plugins/tpm ~/.config/tmux/plugins/tpm
 
 mkdir -p ~/.config/tmux/plugins
 link ~/dotfiles/tmux/plugins/tpm ~/.config/tmux/plugins/tpm

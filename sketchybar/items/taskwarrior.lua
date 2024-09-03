@@ -1,28 +1,4 @@
 #!/bin/bash
-
--- taskwarrior=(
---   script="$PLUGIN_DIR/taskwarrior.sh"
---   update_freq=120
---   icon=󱃔
---   icon.color=$ORANGE
---   label.color=$ORANGE
--- )
--- task_template=(
---   drawing=off
---   background.corner_radius=12
---   padding_left=7
---   padding_right=7
--- )
--- events=(
---   mouse.entered
---   mouse.exited
--- )
--- sketchybar --add item taskwarrior right \
---   --set taskwarrior "${taskwarrior[@]}" \
---   --subscribe taskwarrior "${events[@]}" \
---   --add item task.template popup.taskwarrior \
---   --set task.template "${task_template[@]}"
-
 local settings = require("settings")
 local colors = require("colors")
 
@@ -33,72 +9,82 @@ local taskwarrior = sbar.add("item", "taskwarrior", {
 		color = colors.white,
 	},
 	label = {
-		string = "Tasks",
+		string = "",
 		font = {
 			style = settings.font.style_map["Black"],
 			size = 13.0,
 		},
 	},
-	script = settings.plugin_dir .. "/taskwarrior.sh",
 	update_freq = 120,
 	updates = true,
 })
 
-local popup = sbar.add("item", "tasks.popup", {
-	position = "popup." .. taskwarrior.name,
-	icon = {
-		string = "Tasks:",
-		color = colors.white,
-		font = {
-			size = 12.0,
-		},
-		width = 100,
-		align = "left",
-	},
-	label = {
-		string = "(0)",
-		width = 200,
-		align = "right",
-	},
-})
+local function toggle_popup()
+	taskwarrior:set({ popup = { drawing = "toggle" } })
+end
 
-sbar.add("item", "task.template", {
-	position = "popup." .. taskwarrior.name,
-	drawing = "off",
-})
-
-taskwarrior:subscribe({ "mouse.entered" }, function()
-	sbar.remove("/tasks.pending.*/")
-
-	taskwarrior:set({ popup = { drawing = "on" } })
+local function update()
 	sbar.exec("task +PENDING count", function(result)
-		popup:set({ label = "(" .. result .. ")" })
+		taskwarrior:set({ label = result })
 	end)
+end
+
+local function list_tasks()
+	sbar.remove("/tasks\\.pending\\.*/")
 
 	sbar.exec("task +PENDING export", function(result)
-		for index, value in ipairs(result) do
-			sbar.add("item", "tasks.pending." .. tostring(index), {
-				position = "popup." .. taskwarrior.name,
-				icon = {
-					string = os.date("%m-%d %H:%M:%S", value.entry),
-					color = colors.white,
-					font = {
-						size = 12,
+		taskwarrior:set({ label = #result })
+
+		if #result > 0 then
+			for index, value in ipairs(result) do
+				sbar.add("item", "tasks.pending." .. tostring(index), {
+					drawing = "on",
+					position = "popup." .. taskwarrior.name,
+					icon = {
+						string = os.date("%m-%d %H:%M:%S", tonumber(value.entry)),
+						color = colors.white,
+						font = {
+							size = 12,
+						},
+						width = 20,
+						align = "left",
 					},
-					width = 20,
-					align = "left",
-				},
+					label = {
+						string = value.description,
+						width = 380,
+						align = "right",
+					},
+				})
+			end
+		else
+			sbar.add("item", "tasks.pending.none", {
+				position = "popup." .. taskwarrior.name,
 				label = {
-					string = value.description,
-					width = 180,
-					align = "right",
+					string = "No tasks",
+					width = 200,
+					align = "center",
 				},
 			})
 		end
-		-- popup_tasks:set({ label = { string = result.description } })
+
+		toggle_popup()
 	end)
+end
+
+taskwarrior:subscribe({ "update", "forced" }, function()
+	update()
 end)
 
-taskwarrior:subscribe({ "mouse.exited" }, function()
-	taskwarrior:set({ popup = { drawing = "off" } })
+taskwarrior:subscribe({ "mouse.clicked" }, function()
+	update()
+	list_tasks()
 end)
+
+-- taskwarrior:subscribe({ "mouse.entered" }, function()
+-- 	update()
+-- 	list_tasks()
+-- end)
+--
+-- taskwarrior:subscribe({ "mouse.exited" }, function()
+-- 	popup(false)
+-- end)

@@ -9,50 +9,7 @@ sbar.begin_config()
 require("bar")
 require("default")
 require("items")
-
-sbar.add("bracket", "bracket.apple", { "apple" }, {
-	background = {
-		color = colors.with_alpha(colors.bar.bg, 0.65),
-		height = 35,
-	},
-})
-
-sbar.add("bracket", "bracket.workspace", { "aerospace", "front_app" }, {
-	background = {
-		color = colors.with_alpha(colors.bar.bg, 0.65),
-		height = 35,
-	},
-})
-
-sbar.add("bracket", "bracker.tasks", { "taskwarrior" }, {
-	background = {
-		color = colors.with_alpha(colors.bar.bg, 0.65),
-		height = 35,
-	},
-})
-
-sbar.add("bracket", "bracket.widgets", {
-	"widgets.battery",
-	"widgets.volume1",
-	"widgets.volume2",
-	"widgets.wifi1",
-	"widgets.wifi2",
-	"widgets.wifi.padding",
-}, {
-	padding_left = 10,
-	padding_right = 10,
-	background = {
-		color = colors.with_alpha(colors.bar.bg, 0.65),
-		height = 35,
-	},
-})
-
-sbar.add("bracket", "bracket.calendar", { "calendar" }, {
-	background = {
-		color = colors.with_alpha(colors.bar.bg, 0.65),
-		height = 35,
-	},
-})
+require("brackets")
 
 sbar.end_config()
 

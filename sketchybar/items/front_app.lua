@@ -9,6 +9,7 @@ local front_app = sbar.add("item", "front_app", {
 			style = settings.font.style_map["Black"],
 			size = 12.0,
 		},
+		width = 75,
 	},
 	icon = {
 		background = {

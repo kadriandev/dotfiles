@@ -1,0 +1,15 @@
+# ~/.tmuxinator/sal.yml
+
+name: tnt-sal
+root: ~/work/tnt/tnt-SAL
+windows:
+  - OCR02:
+      layout: main-vertical
+      panes:
+        - ssh mkhd-trp-ocr02
+  - DEV:
+      layout: main-vertical
+      panes:
+  - QA:
+      layout: main-vertical
+      panes:

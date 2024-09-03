@@ -1,7 +1,6 @@
 return {
-	plugin_dir = "~/.config/sketchybar/scripts",
 	paddings = 5,
-	group_paddings = 5,
+	group_paddings = 10,
 
 	icons = "sf-symbols", -- alternatively available: NerdFont
 

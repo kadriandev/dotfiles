@@ -1,0 +1,10 @@
+# ~/.tmuxinator/notes.yml
+
+name: notes
+root: ~/obsidian
+windows:
+  - notes:
+      layout: main-vertical
+      panes:
+        - notes:
+          - nvim

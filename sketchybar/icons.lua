@@ -51,6 +51,13 @@ local icons = {
 		reminders = {
 			icon = "􀓕",
 		},
+		workspaces = {
+			terminal = "",
+			browser = "",
+			messages = "􂄔",
+			music = "",
+			mail = "􀍖",
+		},
 	},
 
 	-- Alternative NerdFont icons

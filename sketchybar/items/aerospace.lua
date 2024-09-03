@@ -1,13 +1,15 @@
 local settings = require("settings")
+local colors = require("colors")
 
 sbar.add("event", "aerospace_workspace_change")
 
 local aerospace = sbar.add("item", "aerospace", {
 	position = "left",
-	label = {
+	padding_left = 20,
+	icon = {
 		font = {
 			style = settings.font.style_map["Black"],
-			size = 18.0,
+			size = 22.0,
 		},
 	},
 	updates = true,
@@ -16,9 +18,12 @@ local aerospace = sbar.add("item", "aerospace", {
 aerospace:subscribe("aerospace_workspace_change", function()
 	sbar.exec("aerospace list-workspaces --focused", function(result)
 		aerospace:set({
-			label = { string = result },
+			icon = {
+				string = result,
+				color = colors.white,
+			},
 		})
 	end)
 end)
 
-sbar.trigger("aerospace_workspace_change")
+-- sbar.trigger("aerospace_workspace_change")
