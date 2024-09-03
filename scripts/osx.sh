@@ -21,7 +21,6 @@ brew tap FelixKratz/formulae
 brew install eza
 brew install neovim
 brew install tmux
-brew install lazygit
 brew install bat
 brew install diff-so-fancy
 brew install git
@@ -53,7 +52,7 @@ curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v1.0.
 
 # Install casks
 brew install visual-studio-code --cask
-brew install alacritty --cask
+brew install wezterm --cask
 brew install bitwarden --cask
 brew install karabiner-elements --cask
 brew install raycast --cask

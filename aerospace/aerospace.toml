@@ -169,7 +169,7 @@ if.app-id = 'company.thebrowser.Browser'
 run = 'move-node-to-workspace 📡' # mnemonics B - Browser
 
 [[on-window-detected]]
-if.app-id = 'com.microsoft.teams2'
+if.app-id = 'com.apple.MobileSMS'
 run = 'move-node-to-workspace 💬' # mnemonics M - Message
 
 [[on-window-detected]]
