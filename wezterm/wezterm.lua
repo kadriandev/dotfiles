@@ -12,5 +12,5 @@ config.font_size = 22
 config.command_palette_font_size = 22
 config.command_palette_rows = 20
 config.window_background_opacity = 0.9
-
+config.audible_bell = "Disabled"
 return config

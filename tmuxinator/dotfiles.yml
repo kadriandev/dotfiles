@@ -1,0 +1,12 @@
+# ~/.tmuxinator/dotfiles.yml
+
+name: dotfiles
+root: ~/dotfiles
+windows:
+    - dotfiles: 
+        layout: a46b,228x54,0,0{159x54,0,0,92,68x54,160,0,97}
+        panes:
+          - nvim -c ":Telescope find_files"
+    - config: 
+        - cd ~/.config
+        - ls

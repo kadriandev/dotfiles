@@ -1,0 +1,6 @@
+# ~/.tmuxinator/homelab.yml
+
+name: homelab
+root: ~/
+windows:
+  - homlab: ssh kadrian@10.0.0.162

@@ -1,0 +1,6 @@
+# ~/.tmuxinator/leetcode.yml
+
+name: leetcode
+root: ~
+windows:
+  - Leet: nvim leet

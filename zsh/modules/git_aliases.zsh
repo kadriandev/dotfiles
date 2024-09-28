@@ -1,3 +1,4 @@
+#!/bin/bash
 
 git config --global alias.co "checkout"
 git config --global alias.new-branch "checkout -b"

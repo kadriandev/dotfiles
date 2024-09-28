@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Setup fzf
 # ---------
 if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then

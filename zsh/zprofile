@@ -1,5 +1,11 @@
+#!/bin/bash
+
 fcd () {
     local dir
     dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
 }
+
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
 

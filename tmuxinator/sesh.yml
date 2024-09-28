@@ -1,0 +1,10 @@
+# ~/.tmuxinator/sesh.yml
+
+name: sesh
+root: ~/projects/sesh
+windows:
+  - sesh:
+      layout: a0aa,228x54,0,0{155x54,0,0,158,72x54,156,0,159}
+      panes:
+        - nvim -c ":Telescope find_files"
+        - go mod tidy

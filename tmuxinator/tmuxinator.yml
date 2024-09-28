@@ -1,9 +1,9 @@
-# ~/.tmuxinator/notes.yml
+# ~/.tmuxinator/tmuxinator.yml
 
-name: notes
-root: ~/obsidian
+name: tmuxinator
+root: ~/dotfiles/tmuxinator
 windows:
-  - notes:
+  - configs:
       layout: main-vertical
       panes:
         - nvim -c ":Telescope find_files"
