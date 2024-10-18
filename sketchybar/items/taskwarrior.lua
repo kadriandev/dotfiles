@@ -3,6 +3,7 @@ local settings = require("settings")
 local colors = require("colors")
 
 local taskwarrior = sbar.add("item", "taskwarrior", {
+	active = "disabled",
 	position = "q",
 	icon = {
 		string = "󱃔",

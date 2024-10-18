@@ -11,9 +11,9 @@ local bracket_style = {
 
 sbar.add("bracket", "bracket.apple", { "apple" }, bracket_style)
 
-sbar.add("bracket", "bracket.workspace", { "aerospace", "front_app" }, bracket_style)
+sbar.add("bracket", "bracket.workspace", { "front_app" }, bracket_style)
 
-sbar.add("bracket", "bracker.tasks", { "taskwarrior" }, bracket_style)
+sbar.add("bracket", "bracker.aerospace", { "aerospace" }, bracket_style)
 
 sbar.add("bracket", "bracket.widgets", {
 	"widgets.battery",

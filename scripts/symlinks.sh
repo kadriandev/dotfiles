@@ -12,6 +12,7 @@ link() {
 
 mkdir -p ~/.config/zsh
 link_file zsh/zshenv .zshenv
+link_file zsh/api_keys api_keys
 link_file zsh/zshrc zsh/.zshrc
 link_file zsh/zprofile zsh/.zprofile
 link zsh/modules

@@ -1,8 +1,0 @@
-# ~/.tmuxinator/sal.yml
-
-name: tnt-sal
-root: ~/work/tnt/tnt-SAL
-windows:
-  - OCR02: ssh mkhd-trp-ocr02
-  - DEV: echo "Dev"
-  - QA: echo "QA"

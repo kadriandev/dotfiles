@@ -12,3 +12,8 @@ startup_command = "nvim -c ':Telescope find_files'"
 name = "notes"
 path = "~/obsidian"
 startup_command = "nvim -c ':Telescope find_files'"
+
+[[session]]
+name = "update"
+path = "~"
+startup_command = ". ./dotfiles/bin/update"

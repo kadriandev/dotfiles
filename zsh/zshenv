@@ -6,6 +6,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+source zsh/api_keys
 
 # pnpm
 export PNPM_HOME="~/Library/pnpm"
