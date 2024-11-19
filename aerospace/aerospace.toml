@@ -125,6 +125,8 @@ ctrl-alt-m = 'workspace 💬'
 ctrl-alt-o = 'workspace 📧'
 ctrl-alt-s = 'workspace 🎵'
 ctrl-alt-p = 'workspace 􀞙 '
+ctrl-alt-f = 'workspace F'
+ctrl-alt-d = 'workspace D'
 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
@@ -134,6 +136,8 @@ ctrl-cmd-alt-m = 'move-node-to-workspace 💬' # mnemonics M - Message
 ctrl-cmd-alt-o = 'move-node-to-workspace 📧' # mnemonics O - Outlook
 ctrl-cmd-alt-s = 'move-node-to-workspace 🎵' # mnemonics S - Spotify
 ctrl-cmd-alt-p = 'move-node-to-workspace 􀞙 ' # mnemonics P - Password Manager
+ctrl-cmd-alt-f = 'move-node-to-workspace F' # mnemonics F - Finder
+ctrl-cmd-alt-d = 'move-node-to-workspace D ' # mnemonics D - Docker
 
 ctrl-cmd-alt-1 = 'move-node-to-workspace 1'
 ctrl-cmd-alt-2 = 'move-node-to-workspace 2'
@@ -175,7 +179,7 @@ if.app-id = 'com.apple.MobileSMS'
 run = 'move-node-to-workspace 💬' # mnemonics M - Message
 
 [[on-window-detected]]
-if.app-id = 'com.microsoft.Outlook'
+if.app-id = 'com.readdle.SparkDesktop'
 run = 'move-node-to-workspace 📧' # mnemonics O - Outlook
 
 [[on-window-detected]]
@@ -185,3 +189,11 @@ run = 'move-node-to-workspace 🎵' # mnemonics O - Outlook
 [[on-window-detected]]
 if.app-id = 'com.bitwarden.desktop'
 run = 'move-node-to-workspace 􀞙 ' # mnemonics P - Password
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'move-node-to-workspace F' # mnemonics P - Password
+
+[[on-window-detected]]
+if.app-id = 'com.electron.dockerdesktop'
+run = 'move-node-to-workspace D ' # mnemonics P - Password
