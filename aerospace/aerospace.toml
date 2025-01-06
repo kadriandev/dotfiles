@@ -127,6 +127,7 @@ ctrl-alt-s = 'workspace 🎵'
 ctrl-alt-p = 'workspace 􀞙 '
 ctrl-alt-f = 'workspace F'
 ctrl-alt-d = 'workspace D'
+ctrl-alt-h = 'workspace H'
 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
@@ -138,6 +139,7 @@ ctrl-cmd-alt-s = 'move-node-to-workspace 🎵' # mnemonics S - Spotify
 ctrl-cmd-alt-p = 'move-node-to-workspace 􀞙 ' # mnemonics P - Password Manager
 ctrl-cmd-alt-f = 'move-node-to-workspace F' # mnemonics F - Finder
 ctrl-cmd-alt-d = 'move-node-to-workspace D ' # mnemonics D - Docker
+ctrl-cmd-alt-h = 'move-node-to-workspace H ' # mnemonics H -HTTP
 
 ctrl-cmd-alt-1 = 'move-node-to-workspace 1'
 ctrl-cmd-alt-2 = 'move-node-to-workspace 2'
@@ -167,8 +169,11 @@ alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
-if.app-id = 'com.github.wez.wezterm'
-run = 'move-node-to-workspace 💻' # mnemonics T - Terminal
+if.app-id = 'com.metchellh.ghostty'
+run= [
+  'layout tiling',
+  'move-node-to-workspace 💻', # mnemonics T - Terminal
+]
 
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
@@ -184,7 +189,7 @@ run = 'move-node-to-workspace 📧' # mnemonics O - Outlook
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
-run = 'move-node-to-workspace 🎵' # mnemonics O - Outlook
+run = 'move-node-to-workspace 🎵' # mnemonics S - Spotify
 
 [[on-window-detected]]
 if.app-id = 'com.bitwarden.desktop'
@@ -192,8 +197,12 @@ run = 'move-node-to-workspace 􀞙 ' # mnemonics P - Password
 
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
-run = 'move-node-to-workspace F' # mnemonics P - Password
+run = 'move-node-to-workspace F' # mnemonics F - Finder
 
 [[on-window-detected]]
 if.app-id = 'com.electron.dockerdesktop'
-run = 'move-node-to-workspace D ' # mnemonics P - Password
+run = 'move-node-to-workspace D ' # mnemonics D - Docker
+
+[[on-window-detected]]
+if.app-id = 'com.usebruno.app'
+run = 'move-node-to-workspace D ' # mnemonics H - HTTP

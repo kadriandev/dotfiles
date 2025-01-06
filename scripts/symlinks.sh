@@ -20,11 +20,11 @@ link zsh/modules
 link_file zsh/starship.toml starship.toml
 
 
-link wezterm
 link nvim
-link taskwarrior
 link tmux
 link tmuxinator
+link ghostty
+link ghostty/themes
 
 # Notes Vault
 ln -s ~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/KadrianCloud ~/obsidian
