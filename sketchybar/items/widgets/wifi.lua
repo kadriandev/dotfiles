@@ -13,6 +13,7 @@ local popup_width = 250
 local wifi_up = sbar.add("item", "widgets.wifi1", {
 	position = "right",
 	padding_left = -5,
+	padding_right = -10,
 	width = 0,
 	icon = {
 		padding_right = 0,
@@ -28,7 +29,7 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 			style = settings.font.style_map["Bold"],
 			size = 12.0,
 		},
-		color = colors.red,
+		color = colors.magenta,
 		string = "??? Bps",
 	},
 	y_offset = 6,
@@ -37,6 +38,7 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 local wifi_down = sbar.add("item", "widgets.wifi2", {
 	position = "right",
 	padding_left = -5,
+	padding_right = -10,
 	icon = {
 		padding_right = 0,
 		font = {
@@ -51,7 +53,7 @@ local wifi_down = sbar.add("item", "widgets.wifi2", {
 			style = settings.font.style_map["Bold"],
 			size = 12.0,
 		},
-		color = colors.blue,
+		color = colors.orange,
 		string = "??? Bps",
 	},
 	y_offset = -6,
@@ -198,7 +200,7 @@ wifi:subscribe({ "wifi_change", "system_woke" }, function()
 		wifi:set({
 			icon = {
 				string = connected and icons.wifi.connected or icons.wifi.disconnected,
-				color = connected and colors.white or colors.red,
+				color = connected and colors.green or colors.red,
 			},
 		})
 	end)

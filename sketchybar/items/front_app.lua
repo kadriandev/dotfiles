@@ -1,5 +1,5 @@
--- local colors = require("colors")
 local settings = require("settings")
+local colors = require("colors")
 
 local front_app = sbar.add("item", "front_app", {
 	display = "active",
@@ -11,6 +11,7 @@ local front_app = sbar.add("item", "front_app", {
 			size = 12.0,
 		},
 		width = 100,
+		color = colors.magenta,
 	},
 	icon = {
 		background = {
@@ -23,7 +24,14 @@ local front_app = sbar.add("item", "front_app", {
 front_app:subscribe("front_app_switched", function(env)
 	front_app:set({
 		label = { string = env.INFO },
-		icon = { background = { image = "app." .. env.INFO } },
+		icon = {
+			background = {
+				image = {
+					string = "app." .. env.INFO,
+					scale = 0.8,
+				},
+			},
+		},
 	})
 end)
 

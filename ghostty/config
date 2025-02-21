@@ -1,6 +1,7 @@
-theme = nvimdark
+# theme = nvimdark
 
 window-theme = ghostty
+config-file = themes/ghostty-theme.conf
 
 window-padding-x = 10
 window-padding-y = 10

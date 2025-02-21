@@ -21,7 +21,7 @@ sbar.default({
 			style = settings.font.style_map["Semibold"],
 			size = 13.0,
 		},
-		color = colors.white,
+		color = colors.magenta,
 		padding_left = settings.paddings,
 		padding_right = settings.paddings,
 	},

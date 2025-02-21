@@ -9,29 +9,21 @@ local volume_percent = sbar.add("item", "widgets.volume1", {
 	icon = { drawing = false },
 	label = {
 		string = "??%",
-		padding_left = -1,
+		padding_left = 1,
 		font = { family = settings.font.numbers },
 	},
 })
 
 local volume_icon = sbar.add("item", "widgets.volume2", {
 	position = "right",
-	padding_right = -1,
+	padding_right = -8,
 	icon = {
 		string = icons.volume._100,
-		width = 0,
+		width = 30,
 		align = "left",
-		color = colors.grey,
+		color = colors.green,
 		font = {
 			style = settings.font.style_map["Regular"],
-		},
-	},
-	label = {
-		width = 25,
-		align = "left",
-		font = {
-			style = settings.font.style_map["Regular"],
-			size = 14.0,
 		},
 	},
 })
@@ -85,7 +77,7 @@ volume_percent:subscribe("volume_change", function(env)
 		lead = "0"
 	end
 
-	volume_icon:set({ label = icon })
+	volume_icon:set({ icon = icon })
 	volume_percent:set({ label = lead .. volume .. "%" })
 	volume_slider:set({ slider = { percentage = volume } })
 end)

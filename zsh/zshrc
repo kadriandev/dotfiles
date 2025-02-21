@@ -1,3 +1,5 @@
+#!/bin/bash
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 plugins=(fzf-tab git nvm zsh-autosuggestions zsh-syntax-highlighting)
@@ -30,3 +32,14 @@ autoload -Uz compinit && compinit -i
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(starship init zsh)"
+
+# pnpm
+export PNPM_HOME="/Users/kylemonteiro/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# bun completions
+[ -s "/Users/kylemonteiro/.bun/_bun" ] && source "/Users/kylemonteiro/.bun/_bun"

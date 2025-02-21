@@ -4,7 +4,7 @@ local settings = require("settings")
 
 sbar.add("item", "apple", {
 	icon = {
-		color = colors.white,
+		color = colors.green,
 		string = icons.apple,
 		padding_right = 15,
 		padding_left = 15,

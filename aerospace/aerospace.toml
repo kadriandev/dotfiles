@@ -119,6 +119,8 @@ ctrl-alt-6 = 'workspace 6'
 ctrl-alt-7 = 'workspace 7'
 ctrl-alt-8 = 'workspace 8'
 ctrl-alt-9 = 'workspace 9'
+
+ctrl-alt-c = 'workspace C'
 ctrl-alt-t = 'workspace 💻'
 ctrl-alt-b = 'workspace 📡'
 ctrl-alt-m = 'workspace 💬'
@@ -140,6 +142,7 @@ ctrl-cmd-alt-p = 'move-node-to-workspace 􀞙 ' # mnemonics P - Password Manager
 ctrl-cmd-alt-f = 'move-node-to-workspace F' # mnemonics F - Finder
 ctrl-cmd-alt-d = 'move-node-to-workspace D ' # mnemonics D - Docker
 ctrl-cmd-alt-h = 'move-node-to-workspace H ' # mnemonics H -HTTP
+ctrl-cmd-alt-c = 'move-node-to-workspace C ' # mnemonics C - Calendar
 
 ctrl-cmd-alt-1 = 'move-node-to-workspace 1'
 ctrl-cmd-alt-2 = 'move-node-to-workspace 2'

@@ -9,7 +9,7 @@ local aerospace = sbar.add("item", "aerospace", {
 	icon = {
 		font = {
 			style = settings.font.style_map["Black"],
-			size = 18.0,
+			size = 14.0,
 		},
 	},
 	updates = true,
