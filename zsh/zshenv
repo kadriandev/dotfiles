@@ -1,15 +1,19 @@
+#!/bin/bash
 
 export EDITOR="nvim"
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export ZSH="$HOME/.oh-my-zsh"
+
+export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/Library/Python/3.9/bin:$PATH"
-source zsh/api_keys
+
+source "$HOME/.config/zsh/api_keys"
 
 # pnpm
-export PNPM_HOME="~/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -19,6 +23,5 @@ esac
 export FZF_DEFAULT_OPTS='--bind=ctrl-k:up,ctrl-j:down'
 . "$HOME/.cargo/env"
 
-
-export NODE_TLS_REJECT_UNAUTHORIZED=1
-export NODE_EXTRA_CA_CERTS="/Library/Application Support/Netskope/STAgent/download/nscacert.pem"
+export NODE_TLS_REJECT_UNAUTHORIZED=0
+export NODE_EXTRA_CA_CERTS=''
