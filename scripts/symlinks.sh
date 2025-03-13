@@ -19,7 +19,6 @@ link zsh/modules
 
 link_file zsh/starship.toml starship.toml
 
-
 link nvim
 link tmux
 link tmuxinator

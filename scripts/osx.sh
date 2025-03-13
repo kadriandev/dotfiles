@@ -1,64 +1,89 @@
 #!/usr/bin/env bash
 
+# Homebrew formulae to install
+PACKAGES=(
+  aws-cdk awscli eza neovim tmux bat diff-so-fancy git nvm yarn npm rename tree webp wget
+  ripgrep zoxide jq gh switchaudio-osx sketchybar joshmedeski/sesh/sesh fzf gum
+)
+
+# Homebrew casks to install
+CASKS=(
+  sf-symbols font-jetbrains-mono-nerd-font bitwarden karabiner-elements raycast spotify obsidian 
+  ghostty nikitabobko/tap/aerospace arc jesseduffield/lazydocker/lazydocker
+)
+
+
+# Function to check if a command exists
+is_command_installed() {
+    command -v "$1" &>/dev/null
+}
+
+# Function to check if an application is installed via `mdfind`
+is_app_installed() {
+    mdfind "kMDItemCFBundleIdentifier == '$1'" | grep -q . 2>/dev/null
+}
+
+# Function to check if a Homebrew package is installed
+is_brew_package_installed() {
+    brew list --formula 2>/dev/null | grep -q "^$1$"
+}
+
+# Generic installation function for Homebrew formulae and casks
+install_brew() {
+    local type=$1
+    local name=$2
+    local identifier=${3:-}
+    shift 3
+    case $type in
+        formula)
+            if ! is_brew_package_installed "$name"; then
+                echo "Installing $name..."
+                brew install "$name" &
+            fi
+            ;;
+        cask)
+            if ! is_app_installed "$identifier"; then
+                echo "Installing $name..."
+                brew install --cask "$name" "$@" &
+            fi
+            ;;
+        *)
+            echo "Unknown type: $type" >&2
+            exit 1
+            ;;
+    esac
+}
+
 # Install command-line tools using Homebrew
 # Ask for the administrator password upfront
-sudo -v
-
-# Keep-alive: update existing `sudo` time stamp until the script has finished
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
 xcode-select --install
 
 # Update and upgrade already-installed formulae
 brew update
 brew upgrade
 
-# Add taps
-brew install --cask sf-symbols
-brew tap FelixKratz/formulae
+# Ensure Zsh is installed and set as default shell
+if [[ "$SHELL" != *"zsh"* ]]; then
+    echo "Installing Zsh..."
+    install_brew formula zsh
+    sudo chsh -s /bin/zsh
+fi
 
-# Install binaries
-brew install eza
-brew install neovim
-brew install tmux
-brew install bat
-brew install diff-so-fancy
-brew install git
-brew install nvm
-brew install yarn
-brew install npm
-brew install rename
-brew install tree
-brew install webp
-brew install wget
-brew install zsh
-brew install ripgrep
-brew install zoxide
-brew install jq
-brew install gh
-brew install switchaudio-osx
-brew install sketchybar
-brew install joshmedeski/sesh/sesh
+echo "Installing Homebrew formulae..."
+for package in "${PACKAGES[@]}"; do
+    install_brew formula "$package"
+done
 
-# Install fzf
-brew install fzf
+echo "Installing Homebrew casks..."
+for cask in "${CASKS[@]}"; do
+    install_brew cask "$cask"
+done
+
 $(brew --prefix)/opt/fzf/install
-
-# Nerd Fonts
-brew install --cask sf-symbols
-brew install --cask font-jetbrains-mono-nerd-font
-brew install --cask font-hack-nerd-font
-brew install --cask font-fira-code-nerd-font
 curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v1.0.16/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
 
-# Install casks
-brew install visual-studio-code --cask
-brew install wezterm --cask
-brew install bitwarden --cask
-brew install karabiner-elements --cask
-brew install raycast --cask
-brew install spotify --cask
-brew install obsidian --cask
+wait
 
-# Remove outdated versions from the cellar
+echo "Setup complete!"
+
 brew cleanup
