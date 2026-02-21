@@ -23,5 +23,5 @@ esac
 export FZF_DEFAULT_OPTS='--bind=ctrl-k:up,ctrl-j:down'
 . "$HOME/.cargo/env"
 
-export NODE_TLS_REJECT_UNAUTHORIZED=0
+export NODE_TLS_REJECT_UNAUTHORIZED=1
 export NODE_EXTRA_CA_CERTS=''

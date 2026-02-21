@@ -4,11 +4,11 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Change left_control key to Hyper(cmd+ctrl+option+shift)",
+                        "description": "Change right_control key to Hyper(cmd+ctrl+option+shift)",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "left_control",
+                                    "key_code": "right_control",
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
@@ -108,6 +108,14 @@
                         "vendor_id": 13364
                     },
                     "treat_as_built_in_keyboard": true
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 24926,
+                        "vendor_id": 7504
+                    },
+                    "ignore": true
                 }
             ],
             "fn_function_keys": [

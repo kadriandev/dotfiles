@@ -5,3 +5,6 @@
 [submodule "tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git 
+[submodule "opencode"]
+	path = opencode
+	url = git@github.com:kadriandev/opencode.git

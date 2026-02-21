@@ -179,7 +179,11 @@ run= [
 ]
 
 [[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
+if.app-id = 'app.zen-browser.zen'
+run = 'move-node-to-workspace 📡' # mnemonics B - Browser
+
+[[on-window-detected]]
+if.app-id = 'com.brave.Browser'
 run = 'move-node-to-workspace 📡' # mnemonics B - Browser
 
 [[on-window-detected]]
@@ -204,8 +208,12 @@ run = 'move-node-to-workspace F' # mnemonics F - Finder
 
 [[on-window-detected]]
 if.app-id = 'com.electron.dockerdesktop'
-run = 'move-node-to-workspace D ' # mnemonics D - Docker
+run = 'move-node-to-workspace C ' # mnemonics C - Containers 
+
+[[on-window-detected]]
+if.app-id = 'org.pgadmin.pgadmin4'
+run = 'move-node-to-workspace D ' # mnemonics D - Database
 
 [[on-window-detected]]
 if.app-id = 'com.usebruno.app'
-run = 'move-node-to-workspace D ' # mnemonics H - HTTP
+run = 'move-node-to-workspace H ' # mnemonics H - HTTP
